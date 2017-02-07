@@ -4,17 +4,23 @@
     {% include head.html %}
   </head>
   <body>
-    <header>
-      {% include header.html %}
-    </header>
-    <nav>
-      {% include nav.html %}
-    </nav>
-    <main>
-      {{ content }}
-    </main>
-    <footer>
-      {% include footer.html %}
-    </footer>
+    <div id="container">
+      <header>
+        <a href="{{ site.url }}" class="no-deco">
+          <div id="siteid">
+            {% include siteid.html %}
+          </div>
+        </a>
+        <nav>
+          {% include nav.html %}
+        </nav>
+      </header>
+      <main>
+        {{ content }}
+      </main>
+      <footer>
+        {% include footer.html %}
+      </footer>
+    </div>
   </body>
 </html>
