@@ -12,24 +12,34 @@
 body
   width: 100vw
   height: 100vh
+  color: rgba(33, 33, 33, 1)
+
+.container
+  width: 60vw
+  margin: 0 auto
+
+#bg
+  position: fixed
+  width: 100vw
+  height: 100vh
+  z-index: -1
   background-image: url(../assets/bg.jpg)
   background-position: center
   background-size: cover
-  color: rgba(33, 33, 33, 1)
-
-#container
-  overflow: scroll
-  width: 65%
-  margin: 0 auto
 
 header
-  display: flex
-  justify-content: space-between
-  align-items: center
-  padding: 0 1em
+  position: fixed
+  top: 0
+  z-index: 2
   background-color: rgba(255, 255, 255, 0.75)
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29)
-  font-family: 'Merriweather', serif
+  & > .container
+    margin: 0 20vw
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 0 1em
+    font-family: 'Merriweather', serif
 
 #siteid
   display: flex
@@ -43,7 +53,7 @@ header
 #logo
   width: 1.75em
   height: 1.75em
-  margin-right: 0.75em
+  margin: 0 0.75em
   border-radius: 50%
 
 nav
@@ -61,23 +71,80 @@ nav
   border-width: 0
   border-style: solid
   border-top-color: rgba(0, 0, 0, 0)
-  border-bottom-color: rgba(0, 102, 0, 1)
+  border-bottom-color: rgba(0, 121, 0, 1)
   transition: border-width 0.1s ease-out
   &:hover
     color: rgba(33, 33, 33, 1)
-    border-width: 5px 0
+    border-width: 3px 0
+
+#terminal
+  position: relative
+  top: 12vh
+  left: 0
+  z-index: 1
+  & > .container
+    padding: 0 1em
+
+#panel
+  font-size: 0.9em
+  text-align: center
+  padding: 5px 0
+  border-radius: 5px 5px 0 0
+  font-family: Helvetica, Arial, sans-serif
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5)
+  background-image: -webkit-linear-gradient(top, #f7f7f7 0%, #cfcfcf 7%, #aaaaaa 100%)
+  border-bottom: 1px solid #111
+
+.panel-btn
+  width: 1em
+  height: 1em
+  border-radius: 50%
+
+#red-btn
+  background-color: red 
+
+#yellow-btn
+  background-color: yellow 
+
+#green-btn
+  background-color: green
+
+#shell
+  padding: 20px
+  height: 60vh
+  background-color: #171717
+  border-radius: 0 0 5px 5px
+  box-shadow: 0 2.5px 2.5px rgba(0, 0, 0, 0.75)
 
 main
-  height: 300px
+  margin-top: 7.5vh
+  height: 60em
+  background-color: rgba(255, 255, 255, 1)
 
 footer
-  display: flex
-  justify-content: space-between
+  background-color: rgba(255, 255, 255, 1)
+  padding: 3em
+  & > .container 
+    display: flex
+    justify-content: space-between
+    padding: 0 2em
+    font-family: 'Open Sans', sans-serif
+    font-size: 0.75em
+    color: rgba(33, 33, 33, 0.45)
 
 #contacts
   display: flex
 
 .contact
-  margin-right: 1em
+  cursor: pointer
+  opacity: 0.5
+  margin-right: 1.1em
+  transition: opacity 0.1s ease-out
   &:last-of-type
     margin-right: 0
+  &:hover
+    opacity: 1
+
+i
+  margin-right: 0.25em
