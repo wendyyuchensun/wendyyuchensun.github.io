@@ -13,26 +13,33 @@ body
   width: 100vw
   height: 100vh
   color: rgba(33, 33, 33, 1)
+  overflow: scroll
 
 .container
   width: 60vw
   margin: 0 auto
 
-#bg
+#bg, #bg-cover
   position: fixed
   width: 100vw
   height: 100vh
-  z-index: -1
+
+#bg
+  z-index: -2
   background-image: url(../assets/bg.jpg)
   background-position: center
   background-size: cover
+
+#bg-cover
+  z-index: -1
+  background-color: rgba(33, 33, 33, 0)
 
 header
   position: fixed
   top: 0
   z-index: 2
   background-color: rgba(255, 255, 255, 0.75)
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29)
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3)
   height: 48px
   & > .container
     margin: 0 20vw
@@ -57,6 +64,12 @@ header
   height: 1.75em
   margin-right: 0.75em
   border-radius: 50%
+  background-image: url(../assets/logo.jpeg)
+  background-size: cover
+  transition: box-shadow 0.3s ease-out
+
+.inner-shadowed
+  box-shadow: inset 1px 1px 3px rgba(33, 33, 33, 0.5), inset -1px -1px 3px rgba(33, 33, 33, 0.5)
 
 nav
   display: flex
@@ -86,13 +99,13 @@ nav
   align-items: center
   border: none
   height: auto
-  padding: 0.25em 0.4em
+  padding: 0.2em 0.4em
   margin-left: 1em
   border-radius: 3px
   background-color: rgba(252, 206, 108, 0.8)
   color: rgba(33, 33, 33, 0.7)
-  box-shadow: 0px -1px 2px transparent
-  transition: background-color 0.1s ease-out, color 0.1s ease-out
+  box-shadow: inset 1px 1px 2px transparent, inset -1px -1px 2px transparent
+  transition: background-color 0.1s ease-out, color 0.1s ease-out, box-shadow 0.3s ease-out 
   i
     font-size: 0.8em
     margin-right: 0.3em
@@ -101,6 +114,7 @@ nav
   &:hover
     color: rgba(33, 33, 33, 0.9)
     background-color: rgba(252, 206, 108, 1)
+    box-shadow: inset 1px 1px 2px rgba(33, 33, 33, 0.25), inset -1px -1px 2px rgba(33, 33, 33, 0.25)
     i
       color: rgba(236, 107, 69, 1)
     
@@ -164,6 +178,7 @@ main
   margin-top: 7.5vh
   height: 60em
   background-color: rgba(255, 255, 255, 1)
+  box-shadow: 0 -10em 12.5em rgba(33, 33, 33, 0.5)
 
 footer
   background-color: rgba(255, 255, 255, 1)
