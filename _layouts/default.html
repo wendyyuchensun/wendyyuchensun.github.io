@@ -4,8 +4,6 @@
     {% include head.html %}
   </head>
   <body>
-    <div id="bg"></div>
-    <div id="bgcover"></div>
     <header>
       <div class="container">
         <a href="{{ site.url }}" class="no-deco">
@@ -18,15 +16,8 @@
         </nav>
       </div>
     </header>
-    <div id="terminal">
-      <div class="container">
-          {% include terminal.html %}
-      </div> 
-    </div>
     <main>
-      <div class="container">
-        {{ content }}
-      </div>
+      {{ content }}
     </main>
     <footer>
       <div class="container">

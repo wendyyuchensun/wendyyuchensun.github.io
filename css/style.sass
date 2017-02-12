@@ -18,18 +18,8 @@ body
   width: 60vw
   margin: 0 auto
 
-#bg, #bgcover
-  position: fixed
-  width: 100vw
-  height: 100vh
-
-#bg
-  z-index: -2
-  background-image: url(../assets/bg.jpg)
-  background-position: center
-  background-size: cover
-
 #bgcover
+  top: 0
   z-index: -1
   background-color: rgba(33, 33, 33, 0)
 
@@ -64,6 +54,11 @@ header
   margin-right: 0.75em
   border-radius: 50%
 
+@keyframes hovered
+  0%
+    color: rgba(33, 33, 33, 0.7)
+  100%
+    color: rgba(33, 33, 33, 1)
 nav
   display: flex
   align-items: center
@@ -78,16 +73,18 @@ nav
   color: rgba(33, 33, 33, 0.7)
   padding: 0 0.75em
   cursor: pointer
-  border-width: 0
-  border-style: solid
-  border-top-color: rgba(0, 0, 0, 0)
-  border-bottom-color: rgba(0, 121, 0, 1)
-  transition: border-width 0.1s ease-out
-  &:hover
-    color: rgba(33, 33, 33, 1)
-    border-width: 3px 0
 
-#hirenav
+.marked
+  color: rgba(33, 33, 33, 1)
+  font-weight: 700
+
+.hovered
+  animation-name: hovered
+  animation-duration: 0.1s
+  animation-timing-function: ease-out
+  animation-fill-mode: forwards
+
+#hire-me
   display: flex
   align-items: center
   border: none
@@ -99,8 +96,7 @@ nav
   color: rgba(33, 33, 33, 0.7)
   box-shadow: 0px -1px 2px transparent
   transition: background-color 0.1s ease-out, color 0.1s ease-out
-  i
-    font-size: 0.8em
+  .i
     margin-right: 0.3em
     color: rgba(236, 107, 69, 0.8)
     transition: color 0.1s ease-out
@@ -109,15 +105,25 @@ nav
     background-color: rgba(252, 206, 108, 1)
     i
       color: rgba(236, 107, 69, 1)
-    
+
+main
+  margin-top: 5em
+
+#bg, #bgcover
+  position: fixed
+  width: 100vw
+  height: 100vh
+
+#bg
+  top: 0
+  z-index: -2
+  background-image: url(../assets/bg.jpg)
+  background-position: center
+  background-size: cover
+
 
 #terminal
-  position: relative
-  top: 12vh
-  left: 0
   z-index: 1
-  & > .container
-    padding: 0 1em
 
 #panel
   position: relative
@@ -160,17 +166,22 @@ nav
   box-shadow: 0.1px 0 0 #00a816, 0 0.1px 0 #00a816, -0.1px 0 0 #00a816, 0 -0.1px 0 #00a816
 
 #shell
-  padding: 20px
+  padding: 20px 30px
   height: 60vh
   background-color: #171717
   border-radius: 0 0 5px 5px
   box-shadow: 0 2.5px 2.5px rgba(0, 0, 0, 0.75)
+  color: rgba(255, 255, 255, 0.9)
+  font-family: 'Open Sans', monospace
+  line-height: 1.5em
 
-main
-  margin-top: 7.5vh
-  height: 60em
+#content
+  position: relative
+  z-index: -1
+  margin-top: -2em
   background-color: rgba(255, 255, 255, 1)
-  box-shadow: 0 -5em 15em rgba(33, 33, 33, 0.75)
+  height: 60em
+  box-shadow: 0 -5em 10em rgba(0, 0, 0, 0.6)
 
 footer
   background-color: rgba(255, 255, 255, 1)
@@ -198,7 +209,7 @@ footer
   &:hover
     opacity: 1
 
-#hire-me
+#hireMe
   transition: color
   &:hover
     color: rgba(236, 107, 69, 0.5)
