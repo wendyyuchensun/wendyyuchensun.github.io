@@ -1,13 +1,8 @@
 ---
 layout: default
 ---
-<div id="bg"></div>
+<div id="bg" style="background-image: url('{{ site.url }}/assets/{{ page.bg }}')"></div>
 <div id="bgcover"></div>
-<div id="terminal">
-  <div class="container">
-    {% include terminal.html %}
-  </div>
-</div>
 <div id="content">
   <div class="container">
     {{ content }}

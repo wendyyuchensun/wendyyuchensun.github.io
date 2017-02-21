@@ -5,4 +5,10 @@ keywords: web development, JavaScript
 url: "http://127.0.0.1:4000" 
 author: Wendy Yuchen Sun
 github_username:  wendyyuchensun
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
 
