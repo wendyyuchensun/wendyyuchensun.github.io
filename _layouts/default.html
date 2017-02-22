@@ -6,20 +6,14 @@
   <body>
     <header>
       <div class="container">
-        <a href="{{ site.url }}" class="no-deco">
-          <div id="siteid">
-            {% include siteid.html %}
-          </div>
-        </a>
-        <div id="menu">Menu</div>
-        <div id="close" class="display-none">Close</div>
-        <nav>
-          {% include nav.html %}
-        </nav>
+        {% include siteid.html %}
+        {% include nav.html %}
       </div>
     </header>
     <main>
-      {{ content }}
+      <div class="container">
+        {{ content }}
+      </div>
     </main>
     <footer>
       <div class="container">
@@ -27,6 +21,4 @@
       </div>
     </footer>
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="{{ site.url }}/scripts/script.js"></script>
 </html>
