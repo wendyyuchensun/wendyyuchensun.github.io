@@ -55,7 +55,52 @@ nav
         margin-left: 0
 
 main
-  margin-top: 4em
+  margin-top: 3em
+  .container
+    padding: 2em 0
+    p
+      font-size: 0.9em
+      line-height: 1.75em
+      color: rgba($color, 0.75)
+
+#not-found
+  display: flex
+  justify-content: space-between
+  align-items: flex-start
+  p
+    width: 22.5em
+    margin-right: 2em
+
+#gcse
+  display: inline-block
+  margin-top: 0.5em
+  padding: 0.3em
+  border: 1px solid rgba($color, 0.25)
+  display: flex
+  align-items: center
+  height: 100%
+  *
+    &:focus, &:hover, &:active, & .focus
+      outline-style: none
+  #search-box
+    font-size: 0.9em
+    width: 14em
+    border: none
+    padding: 0 0.25em
+    &::-webkit-input-placeholder
+      font-style: italic
+  input[type="submit"]
+    font-size: 0.8em
+    height: 2.5em
+    width: 3em
+    font-weight: bold
+    cursor: pointer
+    border: none
+    text-transform: uppercase
+    background-color: rgba($color, 0.25)
+    transition: background-color 0.1s ease-out
+    &:hover
+      background-color: rgba($color, 0.5)
 
 footer
   border-top: 1px solid rgba($color, 0.1)
@@ -72,3 +117,7 @@ nav ul li, footer .container a
 @media (max-width: 768px)
   .container
     width: 90vw
+  #not-found
+    flex-direction: column
+  #gcse
+    margin-top: 1em
