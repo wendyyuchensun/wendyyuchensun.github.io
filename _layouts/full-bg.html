@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    <div id="bg" style="background-image: url({{ site.url }}/assets/{{ page.bg }})">
+      <div class="container">
+        <div id="bg-siteid">
+          <a href="{{ site.url }}">
+            WendyYuchenSun
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="bg-caption">
+      <div class="container">
+        <h1 id="caption-title">{{ page.title }}</h1>
+        <p id="caption-content">{{ page.description }}</p>
+      </div>
+    </div>
+    <main id="fullbg-main">
+      <div class="container">
+        {{ content }}
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        {% include footer.html %}
+      </div>
+    </footer>
+  </body>
+</html>

@@ -16,10 +16,12 @@ a
   text-decoration: none
 
 .container
-  width: 60vw
+  width: 50vw
   max-width: 1000px
-  padding: 0.75em 0
   margin: 0 auto
+
+header .container, footer .container
+  padding: 0.75em 0
 
 header, main, footer
   width: 100vw
@@ -28,13 +30,14 @@ header
   position: fixed
   top: 0
   border-bottom: 1px solid rgba($color, 0.1)
+  background-color: rgba(255, 255, 255, 1)
   .container
     display: flex
     align-items: center
     justify-content: space-between
     font-family: "Merriweather", serif 
 
-#siteid
+#siteid, #bg-siteid
   display: flex
   align-items: center
   font-weight: 700
@@ -43,6 +46,40 @@ header
     height: 1.5em
     border-radius: 50%
     margin-right: 0.75em
+
+#bg-siteid
+  display: inline-block
+  float: right
+  color: rgba(255, 255, 255, 0.5)
+  font-size: 1.25em
+  font-family: "Merriweather", serif 
+  padding: 0.75em 0
+  transform: translateY(0)
+  transition: all 0.1s ease-out
+  &:hover
+    color: rgba(255, 255, 255, 0.9)
+    transform: translateY(5px)
+
+#bg-caption
+  width: 100vw
+  position: absolute
+  bottom: 0
+  background-color: rgba($color, 0.5)
+  padding: 2.5em 0
+  color: white
+  padding-bottom: 5em
+  .container
+    padding-right: 15vw
+
+#caption-title
+  display: inline-block
+  font-family: "Merriweather", serif 
+  font-size: 2.5em
+
+#caption-content
+  margin-top: 2em
+  line-height: 1.5em
+  font-size: 1.1em
 
 nav
   ul
@@ -58,15 +95,48 @@ main
   margin-top: 3em
   .container
     padding: 2em 0
+    h2
+      font-family: "Merriweather", serif 
+      margin-bottom: 1em
     p
       font-size: 0.9em
       line-height: 1.75em
       color: rgba($color, 0.75)
+      margin-bottom: 1em
+    ul li
+      font-size: 0.9em
+      line-height: 1.75em
+      color: rgba($color, 0.75)
+      margin-bottom: 1em
+      list-style-type: none
+      b
+        background-color: yellow
+        margin-right: 1ex
+
+#fullbg-main
+  margin-top: 0
+  .container
+    display: flex
+    align-items: flex-start
+    aside
+      width: 20vw
+      margin-left: 5em
+      order: 2
+    .content
+      section
+        h2
+          font-family: "Merriweather", serif 
+          margin-bottom: 1.5em
+        p
+          line-height: 1.75em
+          font-size: 1em
+          color: rgba($color, 0.75)
 
 #not-found
   display: flex
   justify-content: space-between
   align-items: flex-start
+  padding: 2em 0
   p
     width: 22.5em
     margin-right: 2em
@@ -101,6 +171,11 @@ main
     transition: background-color 0.1s ease-out
     &:hover
       background-color: rgba($color, 0.5)
+#bg
+  height: 100vh
+  width: 100vw
+  background-size: cover
+  background-position: center
 
 footer
   border-top: 1px solid rgba($color, 0.1)
