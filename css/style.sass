@@ -95,15 +95,31 @@ main
   margin-top: 3em
   .container
     padding: 2em 0
-    h2
+    .note-sec
+      margin-left: 1em
+      ul
+        margin-left: 1.5em
+        li
+          font-size: 0.9em
+          line-height: 1.75em
+          color: rgba($color, 0.75)
+          margin-bottom: 0.5em
+        a:hover
+          color: rgba($color, 1)
+    h2, h3, h4
       font-family: "Merriweather", serif 
       margin-bottom: 1em
+    h4
+      margin-bottom: none
+      a::before
+        font-size: 0.9em
+        content: "🔗"
     p
       font-size: 0.9em
       line-height: 1.75em
       color: rgba($color, 0.75)
       margin-bottom: 1em
-    ul li
+    & > ul > li
       font-size: 0.9em
       line-height: 1.75em
       color: rgba($color, 0.75)
@@ -112,6 +128,10 @@ main
       b
         background-color: yellow
         margin-right: 1ex
+    hr
+      margin: 2em 0 1.5em
+      border: none
+      border-top: 1px dotted rgba($color, 0.2)
 
 #fullbg-main
   margin-top: 0
