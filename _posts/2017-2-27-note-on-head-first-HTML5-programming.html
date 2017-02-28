@@ -1,0 +1,54 @@
+---
+title: Note on Head First HTML5 Programming
+---
+<div class="note-sec">
+  {{ page.date }}<br />
+  <a href="http://www.headfirstlabs.com/books/hfhtml5prog/" target="_blank">Link to the book here.</a>
+</div>
+
+<hr />
+
+<h3>Ch1: Getting to Know HTML5</h3>
+
+<div class="note-sec">
+  <p>
+    Modern website today is made of HTML (structure), CSS (representation) + JS (behavior).
+    This book discusses not only HTML but what new technologies surrounding HTML5 is available to help web authors craft modern webs.
+    As a result the unofficial definition of HTML5 in this book is a combinition of markup + JS APIs + CSS.
+    That means if web authors want to master the trend of HTML5, they cannot learn it without JavaScript.
+  </p>
+
+  <p>
+    There are 3 easy and immediate things to do to upgrade website to HTML5: 
+    <ul>
+      <li><b>DOCTYPE declaration</b>informs browsers the type of the document. In HTML5, just use <pre style="display: inline">&lt;!DOCTYPE html&gt;</pre>  will be fine, which means the document conforms the latest HTML standard (including future HTML6, 7, 8,....) and the browser should process the document based on that standard. Better to involve this in HTML docs so that browsers do not need to waste time on guessing how to render the website.</li>
+        <li><b>Meta Charset</b> means the character set the HTML document uses. Now web authors can declare this meta tag with fewer types: <pre style="display: inline">&lt;meta charset="utf-8"&gt;</pre>.</li>
+      <li><b>Link and Script Type</b>: Now standard styling and scripting language of HTML are CSS and JavaScript, so there is no need to specify what types of stylesheet or script are used. The "type" attribute can be ommited.</li>
+    </ul>
+  </p>
+
+  <p>
+    However, these are just updates of some elements in HTML5. The exciting technologies mentioned in the first paragraph are:
+    <ul>
+      <li>CSS3</li>
+      <li>web workers</li>
+      <li>forms</li>
+      <li>offline web apps</li>
+      <li>audio & videos</li>
+      <li>new markup</li>
+      <li>local storage</li>
+      <li>canvas</li>
+      <li>geolocation</li>
+    </ul>
+  </p>
+
+  <p>
+    HTML5 is a superset of HTML4.01, which means HTML5 is designed with backward-compatibility in mind.
+    The degree of support depends on different brands (and versions of) browsers.
+    If client's browser does not support HTML5, web authors need to provide ways to let their websites degrade gracefully.
+  </p>
+</div>
+
+<hr />
+
+<h3>Ch2: Introduction to JS and DOM</h3>
