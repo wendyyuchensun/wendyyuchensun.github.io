@@ -1,8 +1,8 @@
-title: WYS 
-email: wendyyuchensun@gmail.cim 
-description: Becoming a web developer
-keywords: web development, JavaScript 
-url: "https://wendyyuchensun.github.io/" 
+title: Wendy Yuchen Sun 
+email: wendyyuchensun@gmail.com 
+description: Life of WebDev, Cooking & Philosophy.
+keywords: web development, cooking, philosophy 
+url: "https://wendyyuchensun.github.io" 
 author: Wendy Yuchen Sun
 github_username:  wendyyuchensun
 defaults:
@@ -10,5 +10,5 @@ defaults:
     scope:
       path: ""
     values:
-      layout: "default"
+      layout: "post"
 

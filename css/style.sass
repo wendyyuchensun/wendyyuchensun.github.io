@@ -10,7 +10,7 @@ $color: #212121
 body
   color: $color
   font-family: "Open Sans", sans-serif
-
+  
 a
   color: inherit
   text-decoration: none
@@ -20,197 +20,58 @@ a
   max-width: 1000px
   margin: 0 auto
 
-header .container, footer .container
-  padding: 0.75em 0
-
 header, main, footer
   width: 100vw
 
 header
-  position: fixed
-  top: 0
   border-bottom: 1px solid rgba($color, 0.1)
-  background-color: rgba(255, 255, 255, 1)
+  padding: 2em 0 0.75em 0
   .container
-    display: flex
-    align-items: center
-    justify-content: space-between
     font-family: "Merriweather", serif 
 
-#siteid, #bg-siteid
-  display: flex
-  align-items: center
-  font-weight: 700
-  img
-    width: 1.5em
-    height: 1.5em
-    border-radius: 50%
-    margin-right: 0.75em
-
-#bg-siteid
-  display: inline-block
-  float: right
-  color: rgba(255, 255, 255, 0.5)
+#siteid
   font-size: 1.25em
-  font-family: "Merriweather", serif 
-  padding: 0.75em 0
-  transform: translateY(0)
-  transition: all 0.1s ease-out
-  &:hover
-    color: rgba(255, 255, 255, 0.9)
-    transform: translateY(5px)
-
-#bg-caption
-  width: 100vw
-  position: absolute
-  bottom: 0
-  background-color: rgba($color, 0.5)
-  padding: 2.5em 0
-  color: white
-  padding-bottom: 5em
-  .container
-    padding-right: 15vw
-
-#caption-title
-  display: inline-block
-  font-family: "Merriweather", serif 
-  font-size: 2.5em
-
-#caption-content
-  margin-top: 2em
-  line-height: 1.5em
-  font-size: 1.1em
+  font-weight: 700
 
 nav
+  margin-top: 1em
   ul
     display: flex
+    flex-wrap: wrap
     li
       list-style-type: none
-      margin-left: 1em
+      margin-right: 1em
       font-size: 0.75em
-      &:first-child
-        margin-left: 0
+      padding-bottom: 1em
+      color: rgba($color, 0.5)
+      transition: color 0.1s ease-out
+      &:last-child
+        margin-right: 0
+      &:hover
+        color: rgba($color, 0.75)
 
 main
-  margin-top: 3em
   .container
     padding: 2em 0
-    .note-sec
-      margin-left: 1em
-      ul
-        margin-left: 1.5em
-        li
-          font-size: 0.9em
-          line-height: 1.75em
-          color: rgba($color, 0.75)
-          margin-bottom: 0.5em
-        a:hover
-          color: rgba($color, 1)
-    h2, h3, h4
+    h2
+      font-size: 1.25em
       font-family: "Merriweather", serif 
-      margin-bottom: 1em
-    h4
-      margin-bottom: none
-      a::before
-        font-size: 0.9em
-        content: "🔗"
+    date
+      font-size: 0.75em
+      color: rgba($color, 0.5)
     p
       font-size: 0.9em
-      line-height: 1.75em
+      margin-top: 2em
+      line-height: 2em
       color: rgba($color, 0.75)
-      margin-bottom: 1em
-    & > ul > li
-      font-size: 0.9em
-      line-height: 1.75em
-      color: rgba($color, 0.75)
-      margin-bottom: 1em
-      list-style-type: none
-      b
-        background-color: yellow
-        margin-right: 1ex
-    hr
-      margin: 2em 0 1.5em
-      border: none
-      border-top: 1px dotted rgba($color, 0.2)
-
-#fullbg-main
-  margin-top: 0
-  .container
-    display: flex
-    align-items: flex-start
-    aside
-      width: 20vw
-      margin-left: 5em
-      order: 2
-    .content
-      section
-        h2
-          font-family: "Merriweather", serif 
-          margin-bottom: 1.5em
-        p
-          line-height: 1.75em
-          font-size: 1em
-          color: rgba($color, 0.75)
-
-#not-found
-  display: flex
-  justify-content: space-between
-  align-items: flex-start
-  padding: 2em 0
-  p
-    width: 22.5em
-    margin-right: 2em
-
-#gcse
-  display: inline-block
-  margin-top: 0.5em
-  padding: 0.3em
-  border: 1px solid rgba($color, 0.25)
-  display: flex
-  align-items: center
-  height: 100%
-  *
-    &:focus, &:hover, &:active, & .focus
-      outline-style: none
-  #search-box
-    font-size: 0.9em
-    width: 14em
-    border: none
-    padding: 0 0.25em
-    &::-webkit-input-placeholder
-      font-style: italic
-  input[type="submit"]
-    font-size: 0.8em
-    height: 2.5em
-    width: 3em
-    font-weight: bold
-    cursor: pointer
-    border: none
-    text-transform: uppercase
-    background-color: rgba($color, 0.25)
-    transition: background-color 0.1s ease-out
-    &:hover
-      background-color: rgba($color, 0.5)
-#bg
-  height: 100vh
-  width: 100vw
-  background-size: cover
-  background-position: center
 
 footer
   border-top: 1px solid rgba($color, 0.1)
+  padding: 0.75em 0
   .container
     color: rgba($color, 0.5)
     font-size: 0.75em
 
-nav ul li, footer .container a
-  color: rgba($color, 0.5)
-  transition: color 0.1s ease-out
-  &:hover
-    color: rgba($color, 0.75)
-
 @media screen and (max-width: 768px)
   .container
     width: 80vw
-  #gcse
-    margin-top: 1em
