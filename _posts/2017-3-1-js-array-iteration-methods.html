@@ -1,335 +1,360 @@
 ---
 title: 迭代 JavaScript 陣列元素的方法
 ---
-<p>
-  我從 Free Code Camp 學到<a href ="https://goo.gl/XN8Rrf" target="_blank">以 reduce 方法 (method) 取代 for 迴圈 (loop)</a>，
-  以迭代 (iterate) 陣列 (array) 的元素。
-  後來查了 <a href="https://goo.gl/d4r4UO" target="_blank">Flanagan 的JavaScript 大全一書</a>，發現還有其他類似的方法。
-  本文就是此番查找後，用自己的語言重新述說一遍結果的產物。
-</p>
+<section>
+  <p>
+    我從 Free Code Camp 學到<a href ="https://goo.gl/XN8Rrf" target="_blank">以 reduce 方法 (method) 取代 for 迴圈 (loop)</a>，
+    以迭代 (iterate) 陣列 (array) 的元素。
+    後來查了 <a href="https://goo.gl/d4r4UO" target="_blank">Flanagan 的JavaScript 大全一書</a>，發現還有其他類似的方法。
+    本文就是此番查找後，用自己的語言重新述說一遍結果的產物。
+  </p>
+</section>
 
-<h3>The Old Way: for 迴圈</h3>
+<section>
+  <h3>The Old Way: for 迴圈</h3>
 
-<p>
-  在讀到 Free Code Camp 的文章前，我主要是用 for 迴圈製造出目標陣列所有元素的索引 (index)，
-  再藉由索引進用並加以操縱陣列的每個元素。
-  舉例來說，我用一個陣列紀錄一名學生在一次段考中五個科目的成績，並利用 for 迴圈取得總成績：
-</p>
+  <p>
+    在讀到 Free Code Camp 的文章前，我主要是用 for 迴圈製造出目標陣列所有元素的索引 (index)，
+    再藉由索引進用並加以操縱陣列的每個元素。
+    舉例來說，我用一個陣列紀錄一名學生在一次段考中五個科目的成績，並利用 for 迴圈取得總成績：
+  </p>
 
-<div class="code-block">
-  <pre>const scores = [51, 98, 73, 66, 71];</pre>
-  <pre>let sum = 0;</pre>
-  <pre>const numOfSbjs = scores.length;</pre>
-  <pre>for (let i = 0; i != numOfSbjs; i++) {</pre>
-  <pre>   sum += scores[i];</pre>
-  <pre>};</pre>
-  <pre>sum;<span class="comment inline">// 369</span></pre>
-</div>
+  <div class="code-block">
+    <pre>const scores = [51, 98, 73, 66, 71];</pre>
+    <pre>let sum = 0;</pre>
+    <pre>const numOfSbjs = scores.length;</pre>
+    <pre>for (let i = 0; i != numOfSbjs; i++) {</pre>
+    <pre>   sum += scores[i];</pre>
+    <pre>};</pre>
+    <pre></pre>
+    <pre>sum;<span class="comment inline">// 369</span></pre>
+  </div>
+</section>
 
-<h3>ES5 新方法</h3>
+<section>
+  <h3>ES5 新方法</h3>
 
-<p>
-  隨著 JavaScript 版本的衍進，ES5 提供了幾個可以大大簡化上述利用 for 迴圈迭代陣列元素的陣列方法，
-  包括 forEach()、map()、filter() 和 reduce()。
-</p>  
+  <p>
+    隨著 JavaScript 版本的衍進，ES5 提供了幾個可以大大簡化上述利用 for 迴圈迭代陣列元素的陣列方法，
+    包括 forEach()、map()、filter() 和 reduce()。
+  </p>  
 
-<p>
-  Flanagan 在 <a href="https://goo.gl/d4r4UO" target="_blank">JavaScript 大全</a>裡淺析了這些方法的共通點：
-</p>
+  <p>
+    Flanagan 在 <a href="https://goo.gl/d4r4UO" target="_blank">JavaScript 大全</a>裡淺析了這些方法的共通點：
+  </p>
 
-<ul>
-  <li>
-    這些方法的第一個參數是函式 (function)，又可稱為 callback，將在用在尋訪每一個元素時作用在元素上，
-    不存在 (null) 的元素則不會觸動 callback。
-  </li>
-  <li>
-    callback 通常 (但非全部都只) 有三個參數：執行當下所用的陣列元素、該元素在陣列中的索引，以及陣列本身。
-  </li>
-  <li>
-    callback 通常只需要宣告第一個參數；若提供第二個參數，則 callback 將會用在第二個參數上，也就是第二個參數將成為該函式的 this。
-  </li>
-  <li>
-    callback 的回傳 (return) 值很重要，但不同方法處理回傳值的方式也不同，所以如何設定回傳的值同時取決於方法本身與 callback 的設計。
-  </li>
-  <li>
-    這些方法不會直接修改陣列本身，除非所使用的 callback 有此一作用。
-  </li>
-</ul>
+  <ul>
+    <li>
+      這些方法的第一個參數是函式 (function)，又可稱為 callback，將在用在尋訪每一個元素時作用在元素上，
+      不存在 (null) 的元素則不會觸動 callback。
+    </li>
+    <li>
+      callback 通常 (但非全部都只) 有三個參數：執行當下所用的陣列元素、該元素在陣列中的索引，以及陣列本身。
+    </li>
+    <li>
+      callback 通常只需要宣告第一個參數；若提供第二個參數，則 callback 將會用在第二個參數上，也就是第二個參數將成為該函式的 this。
+    </li>
+    <li>
+      callback 的回傳 (return) 值很重要，但不同方法處理回傳值的方式也不同，所以如何設定回傳的值同時取決於方法本身與 callback 的設計。
+    </li>
+    <li>
+      這些方法不會直接修改陣列本身，除非所使用的 callback 有此一作用。
+    </li>
+  </ul>
 
-<p>以下就進入這些方法的詳細介紹囉。</p>
+  <p>以下就進入這些方法的詳細介紹囉。</p>
+</section>
 
-<h3>forEach()</h3>
+<section>
+  <h3>forEach()</h3>
 
-<p>
-  forEach() 的 callback 如同前述，接受三個參數，且後二個可以省略。
-  舉例來說，若用 forEach 來改寫前述的求總分案例，就可以省略後二個參數，
-  且簡化了原本用 for 迴圈時需要先找出陣列長度以製造索引的麻煩：
-</p>
+  <p>
+    forEach() 的 callback 如同前述，接受三個參數，且後二個可以省略。
+    舉例來說，若用 forEach 來改寫前述的求總分案例，就可以省略後二個參數，
+    且簡化了原本用 for 迴圈時需要先找出陣列長度以製造索引的麻煩：
+  </p>
 
-<div class="code-block">
-  <pre><span class="comment">// callback 省略後二個參數</span></pre>
-  <pre></pre>
-  <pre>const scores = [51, 98, 73, 66, 71];</pre>
-  <pre>let sum = 0;</pre>
-  <pre>scores.forEach(score => {<span class="comment inline">// score 是第一個參數，代表每次被尋訪的元素</span></pre>
-  <pre>   sum += score;</pre>
-  <pre>});</pre>
-  <pre>sum;<span class="comment inline">// 369</span></pre>
-</div>
+  <div class="code-block">
+    <pre><span class="comment">// callback 省略後二個參數</span></pre>
+    <pre></pre>
+    <pre>const scores = [51, 98, 73, 66, 71];</pre>
+    <pre>let sum = 0;</pre>
+    <pre>scores.forEach(score => {<span class="comment inline">// score 是第一個參數，代表每次被尋訪的元素</span></pre>
+    <pre>   sum += score;</pre>
+    <pre>});</pre>
+    <pre></pre>
+    <pre>sum;<span class="comment inline">// 369</span></pre>
+  </div>
 
-<p>
-  現在，老師大發慈悲，學生每科成績可以加 5 分，最多加到 100 分，所以得更新學生的成績陣列，
-  此時就可以利用上一個例子沒有用到的另外兩個參數：
-</p>
+  <p>
+    現在，老師大發慈悲，學生每科成績可以加 5 分，最多加到 100 分，所以得更新學生的成績陣列，
+    此時就可以利用上一個例子沒有用到的另外兩個參數：
+  </p>
 
-<div class="code-block">
-  <pre><span class="comment">// callback 使用三個參數</span></pre>
-  <pre></pre>
-  <pre>let scores = [51, 98, 73, 66, 71];</pre>
-  <pre>scores.forEach((score, index, array) => {</pre>
-  <pre>   array[index] = (score + 5) > 100? 100: (score + 5);</pre>
-  <pre>});</pre>
-  <pre>scores;<span class="comment inline">// [56, 100, 78, 71, 76]</span></pre>
-</div>
+  <div class="code-block">
+    <pre><span class="comment">// callback 使用三個參數</span></pre>
+    <pre></pre>
+    <pre>let scores = [51, 98, 73, 66, 71];</pre>
+    <pre>scores.forEach((score, index, array) => {</pre>
+    <pre>   array[index] = (score + 5) > 100? 100: (score + 5);</pre>
+    <pre>});</pre>
+    <pre></pre>
+    <pre>scores;<span class="comment inline">// [56, 100, 78, 71, 76]</span></pre>
+  </div>
+</section>
 
-<h3>map()</h3>
+<section>
+  <h3>map()</h3>
 
-<p>
-  map() 讓我想到國中時學的地圖投影，假設原始的陣列是地球，而傳入 map() 的 callback 是自球體中間發出的投影光線，
-  那 map() 產生的平面地圖就是投影的結果，即一張可以與圓球體對應的平面地圖。
-</p>
+  <p>
+    map() 讓我想到國中時學的地圖投影，假設原始的陣列是地球，而傳入 map() 的 callback 是自球體中間發出的投影光線，
+    那 map() 產生的平面地圖就是投影的結果，即一張可以與圓球體對應的平面地圖。
+  </p>
 
-<p>
-  這樣說起來，map() 與 forEach() 很像，一樣是迭代陣列的所有元素，並在元素上套用 callback，
-  兩者的差異在哪裡呢？
-  答案是：提供給 map() 的 callback 一定要設定回傳值，也就是操縱每個單一元素的結果，
-  而 map() 整體回傳的結果會是一個新的陣列，長度與原陣列相同，
-  且因為不存在的元素不會觸動 callback，所以使用 map() 所產生的新陣列中，
-  這些原陣列空窗的位置，在新陣列裡也會是空窗、不存在的元素。
-</p>
+  <p>
+    這樣說起來，map() 與 forEach() 很像，一樣是迭代陣列的所有元素，並在元素上套用 callback，
+    兩者的差異在哪裡呢？
+    答案是：提供給 map() 的 callback 一定要設定回傳值，也就是操縱每個單一元素的結果，
+    而 map() 整體回傳的結果會是一個新的陣列，長度與原陣列相同，
+    且因為不存在的元素不會觸動 callback，所以使用 map() 所產生的新陣列中，
+    這些原陣列空窗的位置，在新陣列裡也會是空窗、不存在的元素。
+  </p>
 
-<p>
-  如果我們用 map() 來改寫上一個加分的案例，這一次不直接修改原始分數，而是將新的分數存成另一個陣列：
-</p>
+  <p>
+    如果我們用 map() 來改寫上一個加分的案例，這一次不直接修改原始分數，而是將新的分數存成另一個陣列：
+  </p>
 
-<div class="code-block">
-  <pre>const scores = [51, 98, 73, 66, 71];</pre>
-  <pre>const newScores = scores.map(score => {</pre>
-  <pre>   return (score + 5) > 100? 100: (score + 5);</pre>
-  <pre>});</pre>
-  <pre>newScores;<span class="comment inline">// [56, 100, 78, 71, 76]</span></pre>
-</div>
+  <div class="code-block">
+    <pre>const scores = [51, 98, 73, 66, 71];</pre>
+    <pre>const newScores = scores.map(score => {</pre>
+    <pre>   return (score + 5) > 100? 100: (score + 5);</pre>
+    <pre>});</pre>
+    <pre></pre>
+    <pre>newScores;<span class="comment inline">// [56, 100, 78, 71, 76]</span></pre>
+  </div>
+</section>
 
-<h3>filter()</h3>
+<section>
+  <h3>filter()</h3>
 
-<p>
-  顧名思義，filter() 就是過濾出原始陣列裡符合條件的元素。
-  與 map() 一樣的地方是 callback 需要設定回傳條件，而整個 filter() 回傳的值是一個包含所有符合條件元素的新陣列。
-  但與 map() 不一樣的地方是，既然是過濾，那麼可能會有部分元素無法通過 callback 所設定的條件，
-  以至於最終所產生的新陣列的長度不一定與原始陣列一樣，而且新陣列不會有空隙。
-</p>
+  <p>
+    顧名思義，filter() 就是過濾出原始陣列裡符合條件的元素。
+    與 map() 一樣的地方是 callback 需要設定回傳條件，而整個 filter() 回傳的值是一個包含所有符合條件元素的新陣列。
+    但與 map() 不一樣的地方是，既然是過濾，那麼可能會有部分元素無法通過 callback 所設定的條件，
+    以至於最終所產生的新陣列的長度不一定與原始陣列一樣，而且新陣列不會有空隙。
+  </p>
 
-<p>舉例來說，如果我們想要得知上一個例子裡的學生，五科成績中有哪些通過 60 分及格標準：</p>
+  <p>舉例來說，如果我們想要得知上一個例子裡的學生，五科成績中有哪些通過 60 分及格標準：</p>
 
-<div class="code-block">
-  <pre>const pass = newScores.filter(score => {</pre>
-  <pre>   return score >= 60;</pre>
-  <pre>});</pre>
-  <pre>pass;<span class="comment inline">// [100, 78, 71, 76]</span></pre>
-</div>
+  <div class="code-block">
+    <pre>const pass = newScores.filter(score => {</pre>
+    <pre>   return score >= 60;</pre>
+    <pre>});</pre>
+    <pre></pre>
+    <pre>pass;<span class="comment inline">// [100, 78, 71, 76]</span></pre>
+  </div>
+</section>
 
-<h3>reduce()</h3>
+<section>
+  <h3>reduce()</h3>
 
-<p>
-  reduce() 最特別。它的作用是將原始陣列裡的所有元素透過 callback 濃縮成一個結果。
-  為了達到這樣的結果，reduce() 本身與傳入 reduce() 的 callback，在參數設計上跟前面幾個方法不太一樣，
-</p>
+  <p>
+    reduce() 最特別。它的作用是將原始陣列裡的所有元素透過 callback 濃縮成一個結果。
+    為了達到這樣的結果，reduce() 本身與傳入 reduce() 的 callback，在參數設計上跟前面幾個方法不太一樣，
+  </p>
 
-<p>
-  以 reduce() 本身而言，這個方法接受兩個參數，第一個是 callback，
-  第二個是「起始值」，也就是濃縮的基底或起點，是個可有可無的參數。
-</p>
+  <p>
+    以 reduce() 本身而言，這個方法接受兩個參數，第一個是 callback，
+    第二個是「起始值」，也就是濃縮的基底或起點，是個可有可無的參數。
+  </p>
 
-<p>
-  以傳入 reduce() 的 callback 而言，跟 map()、filter() 不一樣的地方在於所使用的參數有四個，
-  除了熟悉的執行當下所用的陣列元素、該元素在陣列中的索引，以及陣列本身作為第二、第三、第四參數外，
-  第一個參數則是「callback 執行當下，所有先前 callback 的結果」。
-  如果 reduce() 本身缺少第二個作為起始值的參數，那麼當第一次執行 callback 時，
-  陣列的第一與第二個元素則會作為 callback 的第一、第二個參數，
-  也就是說第一個元素會作為起始值。
-</p>
+  <p>
+    以傳入 reduce() 的 callback 而言，跟 map()、filter() 不一樣的地方在於所使用的參數有四個，
+    除了熟悉的執行當下所用的陣列元素、該元素在陣列中的索引，以及陣列本身作為第二、第三、第四參數外，
+    第一個參數則是「callback 執行當下，所有先前 callback 的結果」。
+    如果 reduce() 本身缺少第二個作為起始值的參數，那麼當第一次執行 callback 時，
+    陣列的第一與第二個元素則會作為 callback 的第一、第二個參數，
+    也就是說第一個元素會作為起始值。
+  </p>
 
-<p>callback 回傳的內容即為希望如何操弄元素與結果之間的關係。</p>
+  <p>callback 回傳的內容即為希望如何操弄元素與結果之間的關係。</p>
 
-<p>以 reduce() 求分數平均值：</p>
+  <p>以 reduce() 求分數平均值：</p>
 
-<div class="code-block">
-  <pre><span class="comment">// 不需設定起始值 (即不提供 reduce() 的第二個參數)</span></pre>
-  <pre></pre>
-  <pre>const scores = [51, 98, 73, 66, 71];</pre>
-  <pre>const average = scores.reduce((acc, score, indx, arr) => {</pre>
-  <pre>   acc += score;</pre>
-  <pre>   if (indx == arr.length - 1) {</pre>
-  <pre>       return acc / arr.length;</pre>
-  <pre>   } else {</pre>
-  <pre>       return acc;</pre>
-  <pre>   };</pre>
-  <pre>});</pre>
-  <pre>average;<span class="comment inline">// 71.8</span></pre>
-</div>
+  <div class="code-block">
+    <pre><span class="comment">// 不需設定起始值 (即不提供 reduce() 的第二個參數)</span></pre>
+    <pre></pre>
+    <pre>const scores = [51, 98, 73, 66, 71];</pre>
+    <pre>const average = scores.reduce((acc, score, indx, arr) => {</pre>
+    <pre>   acc += score;</pre>
+    <pre>   if (indx == arr.length - 1) {</pre>
+    <pre>       return acc / arr.length;</pre>
+    <pre>   } else {</pre>
+    <pre>       return acc;</pre>
+    <pre>   };</pre>
+    <pre>});</pre>
+    <pre></pre>
+    <pre>average;<span class="comment inline">// 71.8</span></pre>
+  </div>
 
-<p>至於需要設定 reduce() 起始值參數的案例，可以參考以下 <a href="#flatten">flatten() 段落</a>。</p>
+  <p>至於需要設定 reduce() 起始值參數的案例，可以參考以下 <a href="#flatten">flatten() 段落</a>。</p>
+</section>
 
-<h3>四種方法之間的比較，及 What's the Benefits?</h3>
+<section>
+  <h3>四種方法之間的比較，及 What's the Benefits?</h3>
 
-<p>
-  看起來，forEach()、map()、filter()、reduce() 四種方法的差異，
-  主要來自於 callback 參數的設計與回傳結果的樣貌。
-  另外，reduce() 可以選擇提供 callback 以外，第二個作為起始值的參數。
-</p>
+  <p>
+    看起來，forEach()、map()、filter()、reduce() 四種方法的差異，
+    主要來自於 callback 參數的設計與回傳結果的樣貌。
+    另外，reduce() 可以選擇提供 callback 以外，第二個作為起始值的參數。
+  </p>
 
-<table>
-  <tr>
-    <th>方法</th>
-    <th>callback 參數</th>
-    <th>回傳結果</th>
-  <tr>
-    <td>forEach()</td>
-    <td>
-      <ul>
-        <li>執行當下所用的陣列元素</li>
-        <li>該元素在陣列中的索引</li>
-        <li>陣列本身</li>
-      </ul>
-    </td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td>map()</td>
-    <td>同上</td>
-    <td>與原始陣列等長的新陣列</td>
-  </tr>
-  <tr>
-    <td>filter()</td>
-    <td>同上</td>
-    <td>新陣列 (與原始陣列不一定等長)</td>
-  </tr>
-  <tr>
-    <td>reduce()</td>
-    <td>
-      <ul>   
-        <li>執行當下所用的陣列元素</li>
-        <li>該元素在陣列中的索引</li>
-        <li>陣列本身</li>
-      </ul>
-    </td>
-    <td>透過 callback 濃縮所有元素的結果</td>
-  </tr>
-</table>
+  <table>
+    <tr>
+      <th>方法</th>
+      <th>callback 參數</th>
+      <th>回傳結果</th>
+    <tr>
+      <td>forEach()</td>
+      <td>
+        <ul>
+          <li>執行當下所用的陣列元素</li>
+          <li>該元素在陣列中的索引</li>
+          <li>陣列本身</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>map()</td>
+      <td>同上</td>
+      <td>與原始陣列等長的新陣列</td>
+    </tr>
+    <tr>
+      <td>filter()</td>
+      <td>同上</td>
+      <td>新陣列 (與原始陣列不一定等長)</td>
+    </tr>
+    <tr>
+      <td>reduce()</td>
+      <td>
+        <ul>   
+          <li>執行當下所用的陣列元素</li>
+          <li>該元素在陣列中的索引</li>
+          <li>陣列本身</li>
+        </ul>
+      </td>
+      <td>透過 callback 濃縮所有元素的結果</td>
+    </tr>
+  </table>
 
-<p>
-  這些方法刪減了原本使用 for 迴圈時，取得陣列長度、用以製造原始陣列所有元素索引，
-  甚至是設定起始值時所費的功夫。
-</p>
+  <p>
+    這些方法刪減了原本使用 for 迴圈時，取得陣列長度、用以製造原始陣列所有元素索引，
+    甚至是設定起始值時所費的功夫。
+  </p>
+</section>
 
-<h3>What Can We Do with These Methods</h3>
+<section>
+  <h3>What Can We Do with These Methods</h3>
 
-<p id="flatten">用 reduce() 把多維陣列變成一維陣列，元素順序不變：</p>
+  <p id="flatten">用 reduce() 把多維陣列變成一維陣列，元素順序不變：</p>
 
-<div class="code-block">
-  <pre>function flatten(arr) {</pre>
-  <pre>   return arr.reduce((acc, val) => {</pre>
-  <pre>       if (Array.isArray(val)) {</pre>
-  <pre>           acc = acc.concat(flatten(val));</pre>
-  <pre>       } else {</pre>
-  <pre>           acc.push(val);</pre>
-  <pre>       };</pre>
-  <pre>       return acc;</pre>
-  <pre>   }, []);<span class="comment inline">// 無法預知第一個元素是否為陣列，所以直接設定起始值為一空陣列</span></pre>
-  <pre>};</pre>
-  <pre></pre>
-  <pre>flatten([1, [2, 3], [4, [5, 6]]]);<span class="comment inline">// [1, 2, 3, 4, 5, 6]</span></pre>
-</div>
+  <div class="code-block">
+    <pre>function flatten(arr) {</pre>
+    <pre>   return arr.reduce((acc, val) => {</pre>
+    <pre>       if (Array.isArray(val)) {</pre>
+    <pre>           acc = acc.concat(flatten(val));</pre>
+    <pre>       } else {</pre>
+    <pre>           acc.push(val);</pre>
+    <pre>       };</pre>
+    <pre>       return acc;</pre>
+    <pre>   }, []);<span class="comment inline">// 無法預知第一個元素是否為陣列，所以直接設定起始值為一空陣列</span></pre>
+    <pre>};</pre>
+    <pre></pre>
+    <pre>flatten([1, [2, 3], [4, [5, 6]]]);<span class="comment inline">// [1, 2, 3, 4, 5, 6]</span></pre>
+  </div>
 
-<p>用 reduce() 製作計分板 (tally)，例如統計一個陣列裡每種水果出現的次數：</p>
+  <p>用 reduce() 製作計分板 (tally)，例如統計一個陣列裡每種字母出現的次數：</p>
 
-<div class="code-block">
-  <pre>function fruitsTally(fruitsArr) {</pre>
-  <pre>   return fruitsArr.reduce((acc, fruit) => {</pre>
-  <pre>       if (fruit in acc) {</pre>
-  <pre>           acc[fruit]++;</pre>
-  <pre>       } else {</pre>
-  <pre>           acc[fruit] = 1;</pre>
-  <pre>       };</pre>
-  <pre>       return acc;</pre>
-  <pre>   }, {});</pre>
-  <pre>}</pre>
-  <pre></pre>
-  <pre>fruitsTally(["banana", "orange", "apple", "tomato", "apple"]);</pre>
-  <pre><span class="comment">// {"banana": 1, "orange": 1, "apple": 2, "tomato": 1}</span></pre>
-</div>
+  <div class="code-block">
+    <pre>function tally(arr) {</pre>
+    <pre>   return arr.reduce((acc, character) => {</pre>
+    <pre>       if (character in acc) {</pre>
+    <pre>           acc[character]++;</pre>
+    <pre>       } else {</pre>
+    <pre>           acc[character] = 1;</pre>
+    <pre>       };</pre>
+    <pre>       return acc;</pre>
+    <pre>   }, {});</pre>
+    <pre>}</pre>
+    <pre></pre>
+    <pre>tally(["b", "o", "a", "t", "a"]);<span class="comment inline">// {"b": 1, "o": 1, "a": 2, "t": 1}</span></pre>
+  </div>
 
-<p>最後，用 reduce() 來安排管線 (pipeline)：</p>
+  <p>最後，用 reduce() 來安排管線 (pipeline)：</p>
 
-<div class="code-block">
-  <pre>function halve(val) {return val / 2};</pre>
-  <pre>function double(val) {return val * 2};</pre>
-  <pre>function add1(val) {return val + 1};</pre>
-  <pre>function minus1(val) {return val - 1};</pre>
-  <pre></pre>
-  <pre>let pipeline = [add1, add1, minus1, halve, minus1, double];</pre>
-  <pre>const result = pipeline.reduce((total, func) => {</pre>
-  <pre>   return func(total);</pre>
-  <pre>}, 1);</pre>
-  <pre></pre>
-  <pre>result;<span class="comment inline">// ((1 + 1 + 1 - 1) * 0.5 - 1) * 2 = 0</span></pre>
-</div>
+  <div class="code-block">
+    <pre>function halve(val) {return val / 2};</pre>
+    <pre>function double(val) {return val * 2};</pre>
+    <pre>function add1(val) {return val + 1};</pre>
+    <pre>function minus1(val) {return val - 1};</pre>
+    <pre></pre>
+    <pre>let pipeline = [add1, add1, minus1, halve, minus1, double];</pre>
+    <pre>const result = pipeline.reduce((total, func) => {</pre>
+    <pre>   return func(total);</pre>
+    <pre>}, 1);</pre>
+    <pre></pre>
+    <pre>result;<span class="comment inline">// ((1 + 1 + 1 - 1) * 0.5 - 1) * 2 = 0</span></pre>
+  </div>
+</section>
 
-<h3>References</h3>
+<section>
+  <h3>References</h3>
 
-<p>
-  我並沒有記下關於這些陣列方法的所有細節。如果您感興趣，可以繼續聯結到以下的資料：
-</p>
+  <p>
+    我並沒有記下關於這些陣列方法的所有細節。如果您感興趣，可以繼續聯結到以下的資料：
+  </p>
 
-<ul>
-  <li>
-    <a href="https://medium.freecodecamp.com/reduce-f47a7da511a9#.la9iamjnj" target="_blank">
-      Free Code Camp "How JavaScript’s Reduce method works, when to use it, and some of the cool things it can do"
-    </a>
-  </li>
-  <li>
-    <a href="https://medium.com/@joshpitzalis/the-trouble-with-loops-f639e3cc52d9#.j2rus4zbm" target="_blank">
-      Josh Pitzalis "The Trouble With Loops"
-    </a>
-  </li>
-  <li>
-    <a href="https://egghead.io/courses/mastering-asynchronous-programming-the-end-of-the-loop" target="_blank">
-      egghead.io "Asynchronous Programming: The End of The Loop"
-    </a>
-  </li>
-  <li>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank">
-      MDN "Array.prototype.reduce()"
-    </a>
-  </li>
-  <li>
-    <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.reduce" target="_blank">
-      ECMAScript5 Specification "array.prototype.reduce"
-    </a>
-  </li>
-  <li>
-    <a href="http://stackoverflow.com/questions/36144406/how-to-break-on-reduce-method" target="_blank">
-      Stack Overflow "How to break on reduce method"
-    </a>
-  </li>
-  <li>
-    <a href="https://goo.gl/adrK4p" target="_blank">
-      Mozilla.tw "從 JavaScript 的 Map/Reduce 談起 Functional Programming"
-    </a>
-  </li>
-  <li>
-    <a href="http://shop.oreilly.com/product/9780596805531.do" target="_blank">
-      David Flanagan "JavaScript: The Definitive Guide"
-    </a>
-  </li>
-</ul>
+  <ul>
+    <li>
+      <a href="https://medium.freecodecamp.com/reduce-f47a7da511a9#.la9iamjnj" target="_blank">
+        Free Code Camp "How JavaScript’s Reduce method works, when to use it, and some of the cool things it can do"
+      </a>
+    </li>
+    <li>
+      <a href="https://medium.com/@joshpitzalis/the-trouble-with-loops-f639e3cc52d9#.j2rus4zbm" target="_blank">
+        Josh Pitzalis "The Trouble With Loops"
+      </a>
+    </li>
+    <li>
+      <a href="https://egghead.io/courses/mastering-asynchronous-programming-the-end-of-the-loop" target="_blank">
+        egghead.io "Asynchronous Programming: The End of The Loop"
+      </a>
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank">
+        MDN "Array.prototype.reduce()"
+      </a>
+    </li>
+    <li>
+      <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.reduce" target="_blank">
+        ECMAScript5 Specification "array.prototype.reduce"
+      </a>
+    </li>
+    <li>
+      <a href="http://stackoverflow.com/questions/36144406/how-to-break-on-reduce-method" target="_blank">
+        Stack Overflow "How to break on reduce method"
+      </a>
+    </li>
+    <li>
+      <a href="https://goo.gl/adrK4p" target="_blank">
+        Mozilla.tw "從 JavaScript 的 Map/Reduce 談起 Functional Programming"
+      </a>
+    </li>
+    <li>
+      <a href="http://shop.oreilly.com/product/9780596805531.do" target="_blank">
+        David Flanagan "JavaScript: The Definitive Guide"
+      </a>
+    </li>
+  </ul>
+</section>

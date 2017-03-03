@@ -52,74 +52,73 @@ nav
 
 main
   .container
-    padding: 2em 0
+    padding: 2em 0 5em 0
     h2, h3
       font-family: "Merriweather", serif 
     h2
       font-size: 1.25em
-    h3
-      font-size: 1em
-      margin-top: 2em
     date
       font-size: 0.75em
       color: rgba($color, 0.5)
+      line-height: 3em
       display: block
-      margin: .5em 0 2em 0
-    p, ul
-      font-size: 0.9em
-      color: rgba($color, 0.75)
-    p
-      line-height: 2em
-      margin-top: 1em
-      a
-        color: inherit
-    table
-      width: 100%
-      margin: 2em 0
-      font-size: 0.9em
-      color: rgba($color, 0.5)
-      overflow: scroll
-      tr
-        td, th
-          padding: 0.5em 1em
-          line-height: 1.5em
-        td:first-child, th:first-child
-          text-align: center
-          width: 20%
-        th
-          font-weight: normal
-          background-color: #F3F3F3
-          color: rgba($color, 0.75)
-        td
-          border: 1px solid rgba($color, 0.1)
-          ul
-            list-style-type: none
-            margin: 0
-            font-size: inherit
-            color: inherit
-    .code-block
-      margin-top: 1.5em
-      padding: 0.5em 1em
-      background-color: #F3F3F3
-      overflow: scroll
-      pre
-        padding: 0.25em 0
-        .comment
-          color: rgba($color, 0.5)
-        .inline
-          margin-left: 2em
-    ul
-      margin-top: 1em
-      margin-left: 2.25em
-      li
-        line-height: 2em
-    a
-      color: rgba($color, 0.5)
-      border-bottom: 1px dashed rgba($color, 0.25)
-      transition: all 0.1s ease-in-out
-      &:hover
+    section
+      margin-top: 4em
+      &:first-of-type
+        margin-top: 0em
+      h3
+        font-size: 1em
+      p, ul
+        font-size: 0.9em
         color: rgba($color, 0.75)
-        border-bottom: 1px solid rgba($color, 0.5)
+      p, table, ul
+        margin-top: 2em
+      p
+        line-height: 2em
+      table
+        width: 100%
+        font-size: 0.9em
+        color: rgba($color, 0.5)
+        overflow: scroll
+        tr
+          td, th
+            padding: 0.5em 1em
+            line-height: 1.5em
+          td:first-child, th:first-child
+            text-align: center
+            width: 20%
+          th
+            font-weight: normal
+            background-color: #F3F3F3
+            color: rgba($color, 0.75)
+          td
+            border: 1px solid rgba($color, 0.1)
+            ul
+              list-style-type: none
+              margin: 0
+              font-size: inherit
+              color: inherit
+      .code-block
+        margin-top: 1.75em
+        padding: 0.5em 1em
+        background-color: #F3F3F3
+        overflow: scroll
+        pre
+          min-height: 1em
+          line-height: 1.5em
+          .comment
+            color: rgba($color, 0.5)
+          .inline
+            margin-left: 2em
+      ul
+        margin-left: 2.25em
+        li
+          line-height: 2em
+      a
+        border-bottom: 1px dashed rgba($color, 0.25)
+        transition: all 0.1s ease-in-out
+        &:hover
+          border-bottom: 1px solid rgba($color, 0.5)
 
 footer
   border-top: 1px solid rgba($color, 0.1)
