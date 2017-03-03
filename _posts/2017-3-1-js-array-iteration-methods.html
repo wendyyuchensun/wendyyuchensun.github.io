@@ -1,5 +1,7 @@
 ---
 title: 迭代 JavaScript 陣列元素的方法
+description: ES5 提供了幾個可以簡化以 for 迴圈迭代陣列的新方法！
+keywords: JavaScript, array iteration, forEach, map, filter, reduce
 ---
 <section>
   <p>
@@ -36,7 +38,7 @@ title: 迭代 JavaScript 陣列元素的方法
 
   <p>
     隨著 JavaScript 版本的衍進，ES5 提供了幾個可以大大簡化上述利用 for 迴圈迭代陣列元素的陣列方法，
-    包括 forEach()、map()、filter() 和 reduce()。
+    包括 <code>forEach()</code>、<code>map()</code>、<code>filter()</code> 和 <code>reduce()</code>。
   </p>  
 
   <p>
@@ -52,7 +54,7 @@ title: 迭代 JavaScript 陣列元素的方法
       callback 通常 (但非全部都只) 有三個參數：執行當下所用的陣列元素、該元素在陣列中的索引，以及陣列本身。
     </li>
     <li>
-      callback 通常只需要宣告第一個參數；若提供第二個參數，則 callback 將會用在第二個參數上，也就是第二個參數將成為該函式的 this。
+      callback 通常只需要宣告第一個參數。
     </li>
     <li>
       callback 的回傳 (return) 值很重要，但不同方法處理回傳值的方式也不同，所以如何設定回傳的值同時取決於方法本身與 callback 的設計。
@@ -69,8 +71,12 @@ title: 迭代 JavaScript 陣列元素的方法
   <h3>forEach()</h3>
 
   <p>
-    forEach() 的 callback 如同前述，接受三個參數，且後二個可以省略。
-    舉例來說，若用 forEach 來改寫前述的求總分案例，就可以省略後二個參數，
+    <code>forEach()</code> 的 callback 如同前述，接受三個參數，且後二個可以省略。
+    這個方法沒有預設回傳內容。
+  </p>
+
+  <p>
+  舉例來說，若用 <code>forEach()</code> 來改寫前述的求總分案例，就可以省略後二個參數，
     且簡化了原本用 for 迴圈時需要先找出陣列長度以製造索引的麻煩：
   </p>
 
@@ -107,21 +113,22 @@ title: 迭代 JavaScript 陣列元素的方法
   <h3>map()</h3>
 
   <p>
-    map() 讓我想到國中時學的地圖投影，假設原始的陣列是地球，而傳入 map() 的 callback 是自球體中間發出的投影光線，
-    那 map() 產生的平面地圖就是投影的結果，即一張可以與圓球體對應的平面地圖。
+    <code>map()</code> 讓我想到國中時學的地圖投影，
+    假設原始的陣列是地球，而傳入 <code>map()</code> 的 callback 是自球體中間發出的投影光線，
+    那 <code>map()</code> 產生的平面地圖就是投影的結果，即一張可以與圓球體對應的平面地圖。
   </p>
 
   <p>
-    這樣說起來，map() 與 forEach() 很像，一樣是迭代陣列的所有元素，並在元素上套用 callback，
+    這樣說起來，<code>map()</code> 與 <code>forEach()</code> 很像，一樣是迭代陣列的所有元素，並在元素上套用 callback，
     兩者的差異在哪裡呢？
-    答案是：提供給 map() 的 callback 一定要設定回傳值，也就是操縱每個單一元素的結果，
-    而 map() 整體回傳的結果會是一個新的陣列，長度與原陣列相同，
-    且因為不存在的元素不會觸動 callback，所以使用 map() 所產生的新陣列中，
+    答案是：提供給 <code>map()</code> 的 callback 一定要設定回傳值，也就是操縱每個單一元素的結果，
+    而 <code>map()</code> 整體回傳的結果會是一個新的陣列，長度與原陣列相同，
+    且因為不存在的元素不會觸動 callback，所以使用 <code>map()</code> 所產生的新陣列中，
     這些原陣列空窗的位置，在新陣列裡也會是空窗、不存在的元素。
   </p>
 
   <p>
-    如果我們用 map() 來改寫上一個加分的案例，這一次不直接修改原始分數，而是將新的分數存成另一個陣列：
+  如果我們用 <code>map()</code> 來改寫上一個加分的案例，這一次不直接修改原始分數，而是將新的分數存成另一個陣列：
   </p>
 
   <div class="code-block">
@@ -138,9 +145,10 @@ title: 迭代 JavaScript 陣列元素的方法
   <h3>filter()</h3>
 
   <p>
-    顧名思義，filter() 就是過濾出原始陣列裡符合條件的元素。
-    與 map() 一樣的地方是 callback 需要設定回傳條件，而整個 filter() 回傳的值是一個包含所有符合條件元素的新陣列。
-    但與 map() 不一樣的地方是，既然是過濾，那麼可能會有部分元素無法通過 callback 所設定的條件，
+    顧名思義，<code>filter()</code> 就是過濾出原始陣列裡符合條件的元素。
+    與 <code>map()</code> 一樣的地方是 callback 需要設定回傳條件，
+    而整個 <code>filter()</code> 回傳的值是一個包含所有符合條件元素的新陣列。
+    但與 <code>map()</code> 不一樣的地方是，既然是過濾，那麼可能會有部分元素無法通過 callback 所設定的條件，
     以至於最終所產生的新陣列的長度不一定與原始陣列一樣，而且新陣列不會有空隙。
   </p>
 
@@ -159,27 +167,27 @@ title: 迭代 JavaScript 陣列元素的方法
   <h3>reduce()</h3>
 
   <p>
-    reduce() 最特別。它的作用是將原始陣列裡的所有元素透過 callback 濃縮成一個結果。
-    為了達到這樣的結果，reduce() 本身與傳入 reduce() 的 callback，在參數設計上跟前面幾個方法不太一樣，
+    <code>reduce()</code> 最特別。它的作用是將原始陣列裡的所有元素透過 callback 濃縮成一個結果。
+    為了達到這樣的結果，<code>reduce()</code> 本身與傳入 <code>reduce()</code> 的 callback，在參數設計上跟前面幾個方法不太一樣，
   </p>
 
   <p>
-    以 reduce() 本身而言，這個方法接受兩個參數，第一個是 callback，
+    以 <code>reduce()</code> 本身而言，這個方法接受兩個參數，第一個是 callback，
     第二個是「起始值」，也就是濃縮的基底或起點，是個可有可無的參數。
   </p>
 
   <p>
-    以傳入 reduce() 的 callback 而言，跟 map()、filter() 不一樣的地方在於所使用的參數有四個，
+    以傳入 <code>reduce()</code> 的 callback 而言，跟 <code>map()</code>、<code>filter()</code> 不一樣的地方在於所使用的參數有四個，
     除了熟悉的執行當下所用的陣列元素、該元素在陣列中的索引，以及陣列本身作為第二、第三、第四參數外，
     第一個參數則是「callback 執行當下，所有先前 callback 的結果」。
-    如果 reduce() 本身缺少第二個作為起始值的參數，那麼當第一次執行 callback 時，
+    如果 <code>reduce()</code> 本身缺少第二個作為起始值的參數，那麼當第一次執行 callback 時，
     陣列的第一與第二個元素則會作為 callback 的第一、第二個參數，
     也就是說第一個元素會作為起始值。
   </p>
 
   <p>callback 回傳的內容即為希望如何操弄元素與結果之間的關係。</p>
 
-  <p>以 reduce() 求分數平均值：</p>
+  <p>以 <code>reduce()</code> 求分數平均值：</p>
 
   <div class="code-block">
     <pre><span class="comment">// 不需設定起始值 (即不提供 reduce() 的第二個參數)</span></pre>
@@ -197,16 +205,16 @@ title: 迭代 JavaScript 陣列元素的方法
     <pre>average;<span class="comment inline">// 71.8</span></pre>
   </div>
 
-  <p>至於需要設定 reduce() 起始值參數的案例，可以參考以下 <a href="#flatten">flatten() 段落</a>。</p>
+  <p>至於需要設定 <code>reduce()</code> 起始值參數的案例，可以參考以下 <a href="#flatten">flatten() 段落</a>。</p>
 </section>
 
 <section>
   <h3>四種方法之間的比較，及 What's the Benefits?</h3>
 
   <p>
-    看起來，forEach()、map()、filter()、reduce() 四種方法的差異，
+    看起來，<code>forEach()</code>、<code>map()</code>、<code>filter()</code>、<code>reduce()</code> 四種方法的差異，
     主要來自於 callback 參數的設計與回傳結果的樣貌。
-    另外，reduce() 可以選擇提供 callback 以外，第二個作為起始值的參數。
+    另外，<code>reduce()</code> 可以選擇提供 callback 以外，第二個作為起始值的參數。
   </p>
 
   <table>
@@ -215,7 +223,7 @@ title: 迭代 JavaScript 陣列元素的方法
       <th>callback 參數</th>
       <th>回傳結果</th>
     <tr>
-      <td>forEach()</td>
+      <td><code>forEach()</code></td>
       <td>
         <ul>
           <li>執行當下所用的陣列元素</li>
@@ -226,17 +234,17 @@ title: 迭代 JavaScript 陣列元素的方法
       <td>-</td>
     </tr>
     <tr>
-      <td>map()</td>
+      <td><code>map()</code></td>
       <td>同上</td>
       <td>與原始陣列等長的新陣列</td>
     </tr>
     <tr>
-      <td>filter()</td>
+      <td><code>filter()</code></td>
       <td>同上</td>
       <td>新陣列 (與原始陣列不一定等長)</td>
     </tr>
     <tr>
-      <td>reduce()</td>
+      <td><code>reduce()</code></td>
       <td>
         <ul>   
           <li>執行當下所用的陣列元素</li>
@@ -257,9 +265,32 @@ title: 迭代 JavaScript 陣列元素的方法
 <section>
   <h3>What Can We Do with These Methods</h3>
 
-  <p id="flatten">用 reduce() 把多維陣列變成一維陣列，元素順序不變：</p>
+  <p id="flatten">
+    <span class="sub">MISSION#1</span>
+    把多維陣列變成一維陣列，元素順序不變。
+  </p>
 
   <div class="code-block">
+    <pre><span class="comment">// 用 for 迴圈</span></pre>
+    <pre></pre>
+    <pre>var flatten = function(arr) {</pre>
+    <pre>   var newArr = [];</pre>
+    <pre>   for (var i = 0; i < arr.length; i++) {<span class="comment inline">// 記得歸零每個迴圈 i 的起始值</span></pre>
+    <pre>       if (Array.isArray(arr[i])) {</pre>
+    <pre>           newArr = newArr.concat(flatten(arr[i]));</pre>
+    <pre>       } else {</pre>
+    <pre>           newArr = newArr.concat(arr[i]);</pre>
+    <pre>       };</pre>
+    <pre>   };</pre>
+    <pre>   return (newArr);</pre>
+    <pre>};</pre>
+    <pre></pre>
+    <pre>flatten([1, [2, 3], [4, [5, 6]]]);<span class="comment inline">// [1, 2, 3, 4, 5, 6]</span></pre>
+  </div>
+
+  <div class="code-block">
+    <pre><span class="comment">// 用 reduce()</span></pre>
+    <pre></pre>
     <pre>function flatten(arr) {</pre>
     <pre>   return arr.reduce((acc, val) => {</pre>
     <pre>       if (Array.isArray(val)) {</pre>
@@ -274,7 +305,10 @@ title: 迭代 JavaScript 陣列元素的方法
     <pre>flatten([1, [2, 3], [4, [5, 6]]]);<span class="comment inline">// [1, 2, 3, 4, 5, 6]</span></pre>
   </div>
 
-  <p>用 reduce() 製作計分板 (tally)，例如統計一個陣列裡每種字母出現的次數：</p>
+  <p>
+    <span class="sub">MISSION#2</span>
+    製作計分板 (tally)，例如統計一個陣列裡每種字母出現的次數。
+  </p>
 
   <div class="code-block">
     <pre>function tally(arr) {</pre>
@@ -291,7 +325,10 @@ title: 迭代 JavaScript 陣列元素的方法
     <pre>tally(["b", "o", "a", "t", "a"]);<span class="comment inline">// {"b": 1, "o": 1, "a": 2, "t": 1}</span></pre>
   </div>
 
-  <p>最後，用 reduce() 來安排管線 (pipeline)：</p>
+  <p>
+    <span class="sub">MISSION#3</span>
+    安排管線 (pipeline)。
+  </p>
 
   <div class="code-block">
     <pre>function halve(val) {return val / 2};</pre>

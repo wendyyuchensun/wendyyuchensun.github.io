@@ -1,4 +1,30 @@
 ---
 layout: default
 ---
+<section id="Welcome">
+  <h3>Welcome!</h3>
+  <p>
+    Hello, I'm Wendy Yuchen Sun (a.k.a. 孫語辰).<br />
+    I'm a person who likes to 
+    <a href="{{ site.url }}/web_dev/">make websites and web apps</a>, 
+    <a href="{{ site.url }}/cooking/">cook at home</a> and 
+    <a href="{{ site.url }}/philosophy/">read philosophy</a>.
+    <br />
+    Thanks for visit. To know more about me, please go to the <a href="{{ site.url }}/about/">"About" section</a>.<br />
+  </p>
+</section>
 
+<section>
+  <h3>Latest Posts</h3>
+  <ul id="latest-post-list">
+  {% for post in site.posts limit:5 %}
+    <li>{{ post.date | date: "%b %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a></li> 
+  {% endfor %}
+  </ul>
+  <p id="read-more"><a href="{{ site.url }}/all_posts/">All posts...</a></p>
+</section>
+
+<section id="milestones">
+  <h3>Some Milestones of This Website</h3>
+  {% include milestones.html %}
+</section>
