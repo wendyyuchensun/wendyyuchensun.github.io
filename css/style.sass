@@ -57,6 +57,7 @@ main
       font-family: "Merriweather", serif 
     h2
       font-size: 1.25em
+      line-height: 1.5em
     date
       font-size: 0.75em
       color: rgba($color, 0.5)
@@ -67,6 +68,7 @@ main
       &:first-of-type
         margin-top: 2em
       h3
+        line-height: 1.75em
         font-size: 1em
       p, ul
         font-size: 0.9em
@@ -139,6 +141,11 @@ footer
   .container
     color: rgba($color, 0.5)
     font-size: 0.75em
+    .contact
+      margin-left: .5em
+      transition: color 0.1s ease-out
+      &:hover
+        color: rgba($color, 0.75)
 
 @media screen and (max-width: 768px)
   .container
