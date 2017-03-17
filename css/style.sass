@@ -1,6 +1,6 @@
 ---
 ---
-$color: #212121
+@import common
 
 *
   box-sizing: border-box
@@ -73,7 +73,7 @@ main
       p, ul
         font-size: 0.9em
         color: rgba($color, 0.75)
-      p, table, ul
+      p, table, ul, img
         margin-top: 2em
       p
         line-height: 2em
@@ -134,6 +134,8 @@ main
         color: rgba($color, 0.5)
         &:hover
           color: rgba($color, 0.75)
+      img
+        width: 100%
 
 #comments
   margin-top: 8em
@@ -156,3 +158,5 @@ footer
 @media screen and (max-width: 768px)
   .container
     width: 80vw
+
+@import list
