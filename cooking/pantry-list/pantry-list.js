@@ -5,6 +5,10 @@ let list = JSON.parse(fs.readFileSync("pantry-list.json", "utf8"));
 
 Object.prototype.addItem = function(category, item) {
   let itemExisted = false;
+  if (category === undefined || item === undefined) {
+    console.log("Please provide proper name for category or item.");
+    return;
+  };
   for (prop in this) {
     if (typeof this[prop] !== "function") {
       if (this[prop].indexOf(item) > -1) {
