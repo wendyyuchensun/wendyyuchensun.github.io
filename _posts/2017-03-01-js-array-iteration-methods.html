@@ -22,14 +22,16 @@ categories: JS
   </p>
 
   <div class="code-block">
-    <pre>const scores = [51, 98, 73, 66, 71];</pre>
-    <pre>let sum = 0;</pre>
-    <pre>const numOfSbjs = scores.length;</pre>
-    <pre>for (let i = 0; i != numOfSbjs; i++) {</pre>
-    <pre>   sum += scores[i];</pre>
-    <pre>};</pre>
-    <pre></pre>
-    <pre>sum;<span class="comment inline">// 369</span></pre>
+<pre>
+const scores = [51, 98, 73, 66, 71];
+let sum = 0;
+const numOfSbjs = scores.length;
+for (let i = 0; i != numOfSbjs; i++) {
+  sum += scores[i];
+};
+
+sum;<span class="comment inline">// 369</span>
+</pre>
   </div>
 </section>
 
@@ -81,15 +83,17 @@ categories: JS
   </p>
 
   <div class="code-block">
-    <pre><span class="comment">// callback 省略後二個參數</span></pre>
-    <pre></pre>
-    <pre>const scores = [51, 98, 73, 66, 71];</pre>
-    <pre>let sum = 0;</pre>
-    <pre>scores.forEach(score => {<span class="comment inline">// score 是第一個參數，代表每次被尋訪的元素</span></pre>
-    <pre>   sum += score;</pre>
-    <pre>});</pre>
-    <pre></pre>
-    <pre>sum;<span class="comment inline">// 369</span></pre>
+<pre>
+<span class="comment">// callback 省略後二個參數</span>
+
+const scores = [51, 98, 73, 66, 71];
+let sum = 0;
+scores.forEach(score => {<span class="comment inline">// score 是第一個參數，代表每次被尋訪的元素</span>
+   sum += score;
+});
+
+sum;<span class="comment inline">// 369</span>
+</pre>
   </div>
 
   <p>
@@ -98,14 +102,16 @@ categories: JS
   </p>
 
   <div class="code-block">
-    <pre><span class="comment">// callback 使用三個參數</span></pre>
-    <pre></pre>
-    <pre>let scores = [51, 98, 73, 66, 71];</pre>
-    <pre>scores.forEach((score, index, array) => {</pre>
-    <pre>   array[index] = (score + 5) > 100? 100: (score + 5);</pre>
-    <pre>});</pre>
-    <pre></pre>
-    <pre>scores;<span class="comment inline">// [56, 100, 78, 71, 76]</span></pre>
+<pre>
+<span class="comment">// callback 使用三個參數</span>
+    
+let scores = [51, 98, 73, 66, 71];
+scores.forEach((score, index, array) => {
+   array[index] = (score + 5) > 100? 100: (score + 5);
+});
+
+scores;<span class="comment inline">// [56, 100, 78, 71, 76]</span>
+</pre>
   </div>
 </section>
 
@@ -132,12 +138,14 @@ categories: JS
   </p>
 
   <div class="code-block">
-    <pre>const scores = [51, 98, 73, 66, 71];</pre>
-    <pre>const newScores = scores.map(score => {</pre>
-    <pre>   return (score + 5) > 100? 100: (score + 5);</pre>
-    <pre>});</pre>
-    <pre></pre>
-    <pre>newScores;<span class="comment inline">// [56, 100, 78, 71, 76]</span></pre>
+<pre>
+const scores = [51, 98, 73, 66, 71];
+const newScores = scores.map(score => {
+   return (score + 5) > 100? 100: (score + 5);
+});
+
+newScores;<span class="comment inline">// [56, 100, 78, 71, 76]</span>
+</pre>
   </div>
 </section>
 
@@ -155,11 +163,13 @@ categories: JS
   <p>舉例來說，如果我們想要得知上一個例子裡的學生，五科成績中有哪些通過 60 分及格標準：</p>
 
   <div class="code-block">
-    <pre>const pass = newScores.filter(score => {</pre>
-    <pre>   return score >= 60;</pre>
-    <pre>});</pre>
-    <pre></pre>
-    <pre>pass;<span class="comment inline">// [100, 78, 71, 76]</span></pre>
+<pre>
+const pass = newScores.filter(score => {
+   return score >= 60;
+});
+
+pass;<span class="comment inline">// [100, 78, 71, 76]</span>
+</pre>
   </div>
 </section>
 
@@ -190,19 +200,21 @@ categories: JS
   <p>以 <code>reduce()</code> 求分數平均值：</p>
 
   <div class="code-block">
-    <pre><span class="comment">// 不需設定起始值 (即不提供 reduce() 的第二個參數)</span></pre>
-    <pre></pre>
-    <pre>const scores = [51, 98, 73, 66, 71];</pre>
-    <pre>const average = scores.reduce((acc, score, indx, arr) => {</pre>
-    <pre>   acc += score;</pre>
-    <pre>   if (indx == arr.length - 1) {</pre>
-    <pre>       return acc / arr.length;</pre>
-    <pre>   } else {</pre>
-    <pre>       return acc;</pre>
-    <pre>   };</pre>
-    <pre>});</pre>
-    <pre></pre>
-    <pre>average;<span class="comment inline">// 71.8</span></pre>
+<pre>
+<span class="comment">// 不需設定起始值 (即不提供 reduce() 的第二個參數)</span>
+    
+const scores = [51, 98, 73, 66, 71];
+const average = scores.reduce((acc, score, indx, arr) => {
+   acc += score;
+   if (indx == arr.length - 1) {
+       return acc / arr.length;
+   } else {
+       return acc;
+   };
+});
+    
+average;<span class="comment inline">// 71.8</span>
+</pre>
   </div>
 
   <p>至於需要設定 <code>reduce()</code> 起始值參數的案例，可以參考以下 <a href="#flatten">flatten() 段落</a>。</p>
@@ -271,38 +283,42 @@ categories: JS
   </p>
 
   <div class="code-block">
-    <pre><span class="comment">// 用 for 迴圈</span></pre>
-    <pre></pre>
-    <pre>var flatten = function(arr) {</pre>
-    <pre>   var newArr = [];</pre>
-    <pre>   for (var i = 0; i < arr.length; i++) {<span class="comment inline">// 記得歸零每個迴圈 i 的起始值</span></pre>
-    <pre>       if (Array.isArray(arr[i])) {</pre>
-    <pre>           newArr = newArr.concat(flatten(arr[i]));</pre>
-    <pre>       } else {</pre>
-    <pre>           newArr = newArr.concat(arr[i]);</pre>
-    <pre>       };</pre>
-    <pre>   };</pre>
-    <pre>   return (newArr);</pre>
-    <pre>};</pre>
-    <pre></pre>
-    <pre>flatten([1, [2, 3], [4, [5, 6]]]);<span class="comment inline">// [1, 2, 3, 4, 5, 6]</span></pre>
+<pre>
+<span class="comment">// 用 for 迴圈</span>
+
+var flatten = function(arr) {
+   var newArr = [];
+   for (var i = 0; i < arr.length; i++) {<span class="comment inline">// 記得歸零每個迴圈 i 的起始值</span>
+       if (Array.isArray(arr[i])) {
+           newArr = newArr.concat(flatten(arr[i]));
+       } else {
+           newArr = newArr.concat(arr[i]);
+       };
+   };
+   return (newArr);
+};
+
+flatten([1, [2, 3], [4, [5, 6]]]);<span class="comment inline">// [1, 2, 3, 4, 5, 6]</span>
+</pre>
   </div>
 
   <div class="code-block">
-    <pre><span class="comment">// 用 reduce()</span></pre>
-    <pre></pre>
-    <pre>function flatten(arr) {</pre>
-    <pre>   return arr.reduce((acc, val) => {</pre>
-    <pre>       if (Array.isArray(val)) {</pre>
-    <pre>           acc = acc.concat(flatten(val));</pre>
-    <pre>       } else {</pre>
-    <pre>           acc.push(val);</pre>
-    <pre>       };</pre>
-    <pre>       return acc;</pre>
-    <pre>   }, []);<span class="comment inline">// 無法預知第一個元素是否為陣列，所以直接設定起始值為一空陣列</span></pre>
-    <pre>};</pre>
-    <pre></pre>
-    <pre>flatten([1, [2, 3], [4, [5, 6]]]);<span class="comment inline">// [1, 2, 3, 4, 5, 6]</span></pre>
+<pre>
+<span class="comment">// 用 reduce()</span>
+
+function flatten(arr) {
+   return arr.reduce((acc, val) => {
+       if (Array.isArray(val)) {
+           acc = acc.concat(flatten(val));
+       } else {
+           acc.push(val);
+       };
+       return acc;
+   }, []);<span class="comment inline">// 無法預知第一個元素是否為陣列，所以直接設定起始值為一空陣列</span>
+};
+
+flatten([1, [2, 3], [4, [5, 6]]]);<span class="comment inline">// [1, 2, 3, 4, 5, 6]</span>
+</pre>
   </div>
 
   <p>
@@ -311,18 +327,20 @@ categories: JS
   </p>
 
   <div class="code-block">
-    <pre>function tally(arr) {</pre>
-    <pre>   return arr.reduce((acc, character) => {</pre>
-    <pre>       if (character in acc) {</pre>
-    <pre>           acc[character]++;</pre>
-    <pre>       } else {</pre>
-    <pre>           acc[character] = 1;</pre>
-    <pre>       };</pre>
-    <pre>       return acc;</pre>
-    <pre>   }, {});</pre>
-    <pre>}</pre>
-    <pre></pre>
-    <pre>tally(["b", "o", "a", "t", "a"]);<span class="comment inline">// {"b": 1, "o": 1, "a": 2, "t": 1}</span></pre>
+<pre>
+function tally(arr) {
+   return arr.reduce((acc, character) => {
+       if (character in acc) {
+           acc[character]++;
+       } else {
+           acc[character] = 1;
+       };
+       return acc;
+   }, {});
+};
+
+tally(["b", "o", "a", "t", "a"]);<span class="comment inline">// {"b": 1, "o": 1, "a": 2, "t": 1}</span>
+</pre>
   </div>
 
   <p>
@@ -331,17 +349,19 @@ categories: JS
   </p>
 
   <div class="code-block">
-    <pre>function halve(val) {return val / 2};</pre>
-    <pre>function double(val) {return val * 2};</pre>
-    <pre>function add1(val) {return val + 1};</pre>
-    <pre>function minus1(val) {return val - 1};</pre>
-    <pre></pre>
-    <pre>let pipeline = [add1, add1, minus1, halve, minus1, double];</pre>
-    <pre>const result = pipeline.reduce((total, func) => {</pre>
-    <pre>   return func(total);</pre>
-    <pre>}, 1);</pre>
-    <pre></pre>
-    <pre>result;<span class="comment inline">// ((1 + 1 + 1 - 1) * 0.5 - 1) * 2 = 0</span></pre>
+<pre>
+function halve(val) {return val / 2};
+function double(val) {return val * 2};
+function add1(val) {return val + 1};
+function minus1(val) {return val - 1};
+
+let pipeline = [add1, add1, minus1, halve, minus1, double];
+const result = pipeline.reduce((total, func) => {
+   return func(total);
+}, 1);
+
+result;<span class="comment inline">// ((1 + 1 + 1 - 1) * 0.5 - 1) * 2 = 0</span>
+</pre>
   </div>
 </section>
 
