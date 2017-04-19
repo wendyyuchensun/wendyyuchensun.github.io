@@ -1,20 +1,69 @@
 ---
 ---
-@import common
+@import normalize
+@import variable
 
-*
-  box-sizing: border-box
-  margin: 0
-  padding: 0
-
+// base
 body
-  color: $color
-  font-family: "Open Sans", sans-serif
-  
-a
-  color: inherit
-  text-decoration: none
+  color: $lc
+  font-size: $fs
+  font-family: $sansSerif
 
+h1, h2, h3
+  color: $c
+  font-family: $serif 
+  font-size: $tfs
+
+h3
+  font-size: $sfs
+  margin-top: 3rem
+
+p, ul, ol
+  line-height: $fs * 2
+  margin-top: 1.5rem
+
+li
+  margin-left: 1.5rem
+  margin-bottom: 0.2rem
+
+a
+  transition: all 0.1s ease-in-out
+  &:hover
+    color: $c
+
+// component
+nav
+  margin-top: 1rem
+  span
+    font-size: $cfs
+    margin-right: 1rem
+
+date
+  display: block
+  font-family: $sansSerif
+  font-size: $dfs
+  margin-top: 0.5rem
+
+p > code
+  padding: 0 2px
+  border: 1px solid rgba($c, 0.2)
+  background: rgba($c, 0.1)
+  border-radius: 2px
+
+pre
+  font-size: $cfs
+  line-height: $cfs * 1.5
+  padding: 0.8rem 1rem
+  margin-top: 1.5rem
+  overflow: scroll
+
+#disqus
+  margin-top: 8rem
+
+#disqus_thread
+  margin-top: 1rem
+
+// layout
 .container
   width: 50vw
   max-width: 1000px
@@ -24,167 +73,33 @@ header, main, footer
   width: 100vw
 
 header
-  border-bottom: 1px solid rgba($color, 0.1)
-  padding: 2em 0 0.75em 0
-  .container
-    font-family: "Merriweather", serif 
-
-#siteid
-  font-size: 1.25em
-  font-weight: 700
-
-nav
-  margin-top: 1em
-  ul
-    display: flex
-    flex-wrap: wrap
-    li
-      list-style-type: none
-      margin-right: 1em
-      font-size: 0.75em
-      padding-bottom: 1em
-      color: rgba($color, 0.5)
-      transition: color 0.1s ease-out
-      &:last-child
-        margin-right: 0
-      &:hover
-        color: rgba($color, 0.75)
+  padding: 1.5rem 0 1rem 0
+  border-bottom: $border
+  nav
+    font-family: $serif
 
 main
   .container
-    padding: 2em 0 5em 0
-    h2, h3
-      font-family: "Merriweather", serif 
-    h2
-      font-size: 1.25em
-      line-height: 1.5em
-    date
-      font-size: 0.75em
-      color: rgba($color, 0.5)
-      line-height: 3em
-      display: block
-    section
-      margin-top: 4em
-      &:first-of-type
-        margin-top: 2em
-      h3
-        line-height: 1.75em
-        font-size: 1em
-      p, ul
-        font-size: 0.9em
-        color: rgba($color, 0.75)
-      p, table, ul, img
-        margin-top: 2em
-      p
-        line-height: 2em
-        &:first-child
-          margin-top: 0
-        .sub
-          font-size: 0.85em
-          margin-right: 0.25em
-          padding: 0 0.25em
-          color: white
-          background-color: rgba($color, 0.5)
-      table
-        width: 100%
-        font-size: 0.9em
-        color: rgba($color, 0.5)
-        overflow: scroll
-        tr
-          td, th
-            padding: 0.5em 1em
-            line-height: 1.5em
-          td:first-child, th:first-child
-            text-align: center
-            width: 20%
-          th
-            font-weight: normal
-            background-color: #F3F3F3
-            color: rgba($color, 0.75)
-          td
-            border: 1px solid rgba($color, 0.1)
-            ul
-              list-style-type: none
-              margin: 0
-              font-size: inherit
-              color: inherit
-      .code-block
-        margin-top: 1.75em
-        padding: 0.5em 1em
-        background-color: #F3F3F3
-        overflow: scroll
-        pre
-          min-height: 1em
-          line-height: 1.5em
-          .comment
-            color: rgba($color, 0.5)
-          .inline
-            margin-left: 2em
-      ul
-        margin-left: 2.25em
-        li
-          line-height: 2em
-        .topLayer
-          margin-bottom: 1em
-          &:last-of-type
-            margin-bottom: 0
-          ul
-            margin-top: 0.5em
-          p
-            margin-left: 1em
-            margin-top: 1em
-      a
-        border-bottom: 1px dashed rgba($color, 0.25)
-        transition: all 0.1s ease-in-out
-        &:hover
-          border-bottom: 1px solid rgba($color, 0.5)
-      #read-more
-        text-align: right
-        color: rgba($color, 0.5)
-        &:hover
-          color: rgba($color, 0.75)
-      img
-        width: 100%
-      figcaption
-        color: rgba($color, 0.5)
-        font-size: 0.75em
-        margin-top: 0.25em
-      #allPostList
-        list-style: none
-        margin-left: 0
-        li
-          display: flex
-          align-items: flex-start
-          margin-bottom: 1em
-          line-height: 1.75em
-
-#comments
-  margin-top: 8em
-  h3
-    margin-bottom: 1em
+    padding: 2rem 0 4rem 0
+  a
+    border-bottom: 1px dotted rgba($c, 0.2)
+    &:hover
+      border-bottom: 1px solid rgba($c, 0.5)
 
 footer
-  border-top: 1px solid rgba($color, 0.1)
-  padding: 0.75em 0
-  .container
-    color: rgba($color, 0.5)
-    font-size: 0.75em
-    .contact
-      margin-left: .5em
-      transition: color 0.1s ease-out
-      cursor: pointer
-      &:hover
-        color: rgba($color, 0.75)
+  font-size: $cfs 
+  padding: 0.75rem 0
+  border-top: $border
+  a
+    &:hover
+      color: $c
+  .contact
+    margin-left: .5rem
+    cursor: pointer
 
+@import syntax-hl
+
+// rwd
 @media screen and (max-width: 768px)
   .container
     width: 80vw
-  main
-    .container
-      section
-        #back2top
-          right: 2em
-        #subTip
-          width: 98vw
-
-@import list

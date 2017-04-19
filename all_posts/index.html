@@ -2,10 +2,8 @@
 title: All Posts
 layout: default
 ---
-<section>
-  <ul id="allPostList">
-    {% for post in site.posts %}
-      {% include allPostLi.html %}
-    {% endfor %}
-  </ul>
-</section>
+<ul>
+  {% for post in site.posts %}
+  <li>{{ post.date | date: "%b %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>

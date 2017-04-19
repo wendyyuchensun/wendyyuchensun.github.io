@@ -1,8 +1,0 @@
-<li>
-  {% for category in post.categories %}
-  <div class="catTag {{ category }}">{{ category }}</div>
-  {% endfor %}
-  <div class="dateTitle">
-    {{ post.date | date: "%b %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a>
-  </div>
-</li>
