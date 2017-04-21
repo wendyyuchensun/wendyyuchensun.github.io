@@ -47,7 +47,7 @@ sum;  // 369
 const scores = [51, 98, 73, 66, 71];
 let sum = 0;
 scores.forEach(score => {// score 是第一個參數，代表每次被尋訪的元素
- sum += score;
+  sum += score;
 });
 
 sum;  // 369
@@ -61,7 +61,7 @@ sum;  // 369
   
 let scores = [51, 98, 73, 66, 71];
 scores.forEach((score, index, array) => {
- array[index] = (score + 5) > 100? 100: (score + 5);
+  array[index] = (score + 5) > 100? 100: (score + 5);
 });
 
 scores; // [56, 100, 78, 71, 76]
@@ -79,7 +79,7 @@ scores; // [56, 100, 78, 71, 76]
 ```js
 const scores = [51, 98, 73, 66, 71];
 const newScores = scores.map(score => {
- return (score + 5) > 100? 100: (score + 5);
+  return (score + 5) > 100? 100: (score + 5);
 });
 
 newScores;  // [56, 100, 78, 71, 76]
@@ -95,7 +95,7 @@ newScores;  // [56, 100, 78, 71, 76]
 
 ```js
 const pass = newScores.filter(score => {
- return score >= 60;
+  return score >= 60;
 });
 
 pass; // [100, 78, 71, 76]
@@ -118,12 +118,12 @@ callback 回傳的內容即為希望如何操弄元素與結果之間的關係�
   
 const scores = [51, 98, 73, 66, 71];
 const average = scores.reduce((acc, score, indx, arr) => {
- acc += score;
- if (indx == arr.length - 1) {
-     return acc / arr.length;
- } else {
-     return acc;
- };
+  acc += score;
+  if (indx == arr.length - 1) {
+    return acc / arr.length;
+  } else {
+    return acc;
+  };
 });
   
 average;  // 71.8
@@ -140,15 +140,15 @@ array：</p>
 // 用 for 迴圈
 
 var flatten = function(arr) {
- var newArr = [];
- for (var i = 0; i < arr.length; i++) { // 記得歸零每個迴圈 i 的起始值
-     if (Array.isArray(arr[i])) {
-         newArr = newArr.concat(flatten(arr[i]));
-     } else {
-         newArr = newArr.concat(arr[i]);
-     };
- };
- return (newArr);
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) { // 記得歸零每個迴圈 i 的起始值
+    if (Array.isArray(arr[i])) {
+      newArr = newArr.concat(flatten(arr[i]));
+    } else {
+      newArr = newArr.concat(arr[i]);
+    };
+  };
+  return (newArr);
 };
 
 flatten([1, [2, 3], [4, [5, 6]]]);  // [1, 2, 3, 4, 5, 6]
@@ -158,14 +158,14 @@ flatten([1, [2, 3], [4, [5, 6]]]);  // [1, 2, 3, 4, 5, 6]
 // 用 reduce
 
 function flatten(arr) {
- return arr.reduce((acc, val) => {
-     if (Array.isArray(val)) {
-         acc = acc.concat(flatten(val));
-     } else {
-         acc.push(val);
-     };
-     return acc;
- }, []);  // 無法預知第一個元素是否為陣列，所以直接設定起始值為一空陣列
+  return arr.reduce((acc, val) => {
+    if (Array.isArray(val)) {
+      acc = acc.concat(flatten(val));
+    } else {
+      acc.push(val);
+    };
+    return acc;
+  }, []);  // 無法預知第一個元素是否為陣列，所以直接設定起始值為一空陣列
 };
 
 flatten([1, [2, 3], [4, [5, 6]]]);  // [1, 2, 3, 4, 5, 6]
@@ -175,14 +175,14 @@ flatten([1, [2, 3], [4, [5, 6]]]);  // [1, 2, 3, 4, 5, 6]
 
 ```js
 function tally(arr) {
- return arr.reduce((acc, character) => {
-     if (character in acc) {
-         acc[character]++;
-     } else {
-         acc[character] = 1;
-     };
-     return acc;
- }, {});
+  return arr.reduce((acc, character) => {
+    if (character in acc) {
+      acc[character]++;
+    } else {
+      acc[character] = 1;
+    };
+    return acc;
+  }, {});
 };
 
 tally(["b", "o", "a", "t", "a"]); // {"b": 1, "o": 1, "a": 2, "t": 1}
@@ -198,7 +198,7 @@ function minus1(val) {return val - 1};
 
 let pipeline = [add1, add1, minus1, ddv2, minus1, mul2];
 const result = pipeline.reduce((total, func) => {
- return func(total);
+  return func(total);
 }, 1);
 
 result; // ((1 + 1 + 1 - 1) * 0.5 - 1) * 2 = 0
