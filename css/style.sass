@@ -16,6 +16,7 @@ h1, h2, h3
 
 h3
   font-size: $sfs
+  line-height: 1.5rem
   margin-top: 2rem
 
 p, ul, ol
@@ -45,7 +46,7 @@ date
   font-size: $dfs
   margin-top: 0.5rem
 
-p > code
+p > code, li > code
   padding: 0 2px
   border: 1px solid rgba($c, 0.2)
   background: rgba($c, 0.1)
@@ -53,18 +54,24 @@ p > code
 
 .highlight
   margin-top: 1.5rem
-  overflowi-x: auto
+  overflow-x: auto
 
 .gl
   color: #75715e
 
 pre
   font-size: $cfs
-  line-height: $cfs * 1.5
-  padding: 0.8rem 1rem
+  line-height: $cfs * 1.65
+  padding: 0.8rem 1rem 0.9rem 1rem
 
-.contact
-  margin-left: .25rem
+.code > pre
+  padding-left: 0.25rem
+
+#copyright, .contact
+  margin-right: 0.25rem
+
+#contact-btns
+  display: inline
 
 #disqus
   margin-top: 8rem
@@ -98,12 +105,18 @@ footer
   padding: 0.75rem 0
   border-top: $border
 
+// syntax highlight
 @import syntax-hl
 
 // rwd
 @media screen and (max-width: 768px)
   .container
     width: 80vw
+
+@media screen and (max-width: 375px)
+  #contact-btns
+    display: block
+    margin-top: 0.25rem
 
 @media screen and (min-width: 1680px)
   .container
