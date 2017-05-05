@@ -239,7 +239,7 @@ method，而這個被借用的 method 有用到 `this`，那麼究竟此時 `thi
 ```js
 const obj1 = {
   nums: [1, 2, 3, 4],
-  length: this.nums.length;
+  length: this.nums.length,
   avgNum: null,
   avg () {
     return this.nums.reduce((a, n) => a += n) / this.length;
