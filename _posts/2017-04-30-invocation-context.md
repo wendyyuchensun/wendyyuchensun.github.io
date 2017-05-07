@@ -71,7 +71,7 @@ function add (c, d) {
 
 const obj = {a: 1, b: 2};
 
-// Now we know what is "this".
+// Now we know what "this" is.
 // It's the first parameter passed into call/apply.
 add.call(obj, 3, 4); // 10;
 add.apply(obj, [3, 4]); // 10
