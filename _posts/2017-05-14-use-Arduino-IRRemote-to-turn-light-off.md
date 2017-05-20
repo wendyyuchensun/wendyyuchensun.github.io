@@ -4,7 +4,9 @@ keywords: Arduino, IRRemote
 categories: diy
 ---
 <figure>
-  <iframe src="https://www.youtube.com/embed/6VKgKNWoLc4" frameborder="0" allowfullscreen></iframe>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/6VKgKNWoLc4" frameborder="0" allowfullscreen></iframe>
+  </div>
   <figcaption>鏡頭外，按下紅外線遙控器，關燈。馬達在右邊，固定在電燈開關面板上；Arduino 與紅外線接收器則在書櫃下鐵網架處。</figcaption>
 </figure>
 
@@ -41,12 +43,16 @@ Bug 大多與原本大致可以 work
 ### Result
 
 <figure>
-  <iframe src="https://www.youtube.com/embed/HBQzwds-sfY" frameborder="0" allowfullscreen></iframe>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/HBQzwds-sfY" frameborder="0" allowfullscreen></iframe>
+  </div>
   <figcaption>單看伺服馬達的部分。按紅外線遙控器是在鏡頭之外。</figcaption>
 </figure>
 
 <figure>
-  <iframe src="https://www.youtube.com/embed/bmQVhHCHJUY" frameborder="0" allowfullscreen></iframe>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/bmQVhHCHJUY" frameborder="0" allowfullscreen></iframe>
+  </div>
   <figcaption>單看 Arduino 與紅外線接收器的部分。當收到紅外線訊號時，Arduino
 的 Pin 13 腳位會閃爍提示有偵測到紅外線，但我設定成只有特定訊號會啟動馬達。</figcaption>
 </figure>
