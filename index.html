@@ -17,7 +17,7 @@ layout: default
 <h3>Some Milestones of This Website</h3>
 <ul>
   {% assign post = site.posts.first %}
-  <li>{{ post.date | date: "%b %d, %Y" }} - Latest update.</li>
+  <li>{{ post.date | date: "%b %d, %Y" }} - <a href="{{ post.url }}">Latest update</a>.</li>
   <li>Mar 01, 2017 - 
     <a href="{{ site.url }}/js/2017/03/01/js-array-iteration-methods.html">第一篇技術筆記</a>
   </li>
