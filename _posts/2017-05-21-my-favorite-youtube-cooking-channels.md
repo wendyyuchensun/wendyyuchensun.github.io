@@ -1,5 +1,5 @@
 ---
-title: My Favorite Youtube Cooking Channel
+title: My Favorite Youtube Cooking Channels
 categories: cooking
 keywords: Youtube
 ---
