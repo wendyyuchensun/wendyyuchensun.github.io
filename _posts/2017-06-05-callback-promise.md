@@ -205,5 +205,5 @@ const p = Promise.resolve(42).then(v => new Promise((res, rej) => rej(v + 1))).t
 [7]:http://www.mattgreer.org/articles/promises-in-wicked-detail/#further-reading
 [8]:https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
 
-[f1]:{{ page.url }}/#footnotes
+[f1]:#footnotes
 [img1]:{{ site.url }}/assets/promise-props.jpg
