@@ -190,9 +190,9 @@ const p = Promise.resolve(42).then(v => new Promise((res, rej) => rej(v + 1))).t
 
 ### Footnotes
 
-<p id="f1">註一：在瀏覽器的實踐裡，這兩個 property 並不一定真的叫做 status
+在瀏覽器的實踐裡，這兩個 property 並不一定真的叫做 status
   跟 value，也不一定可以進用。我還沒讀 ES6 的 Spec，不太確定 Spec
-是怎麼規定的，但可以看到 Chrome v58.0.3029.110 的 DevTool 顯示是這樣：</p>
+是怎麼規定的，但可以看到 Chrome v58.0.3029.110 的 DevTool 顯示是這樣：
 
 ![Promise properties][img1]
 
@@ -205,5 +205,5 @@ const p = Promise.resolve(42).then(v => new Promise((res, rej) => rej(v + 1))).t
 [7]:http://www.mattgreer.org/articles/promises-in-wicked-detail/#further-reading
 [8]:https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
 
-[f1]:{{ page.url }}/#f1
-[img1]:{{ site.url }}/assets/Promise-props.jpg
+[f1]:{{ page.url }}/#footnotes
+[img1]:{{ site.url }}/assets/promise-props.jpg
