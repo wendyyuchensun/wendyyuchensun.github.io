@@ -1,0 +1,9 @@
+_site
+.sass-cache
+.jekyll-metadata
+.swp
+node_modules/
+_draft/
+test/
+_config_dev.yml
+_config_mobile.yml
