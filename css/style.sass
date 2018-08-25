@@ -25,9 +25,15 @@ h4
   &::before
     content: "// "
 
-p, ul, ol, figure
+p, ol, figure
   line-height: $fs * 2
   margin-top: 1.5rem
+
+ul
+  line-height: $fs * 2
+  margin-top: 1.5rem
+  &#contact-info
+    margin-top: 0.25rem
 
 li
   margin-left: 1.5rem
@@ -64,11 +70,11 @@ figcaption
     font-size: $cfs
 
 nav
-  font-family: $serif
-  margin-top: 1rem
-  span
+  a
     font-size: $cfs
     margin-right: 0.6rem
+    &:last-of-type
+      margin-right: 0
 
 date
   display: block
@@ -127,6 +133,10 @@ header, main, footer
 header
   padding: 1.5rem 0 1rem 0
   border-bottom: $border
+  .container
+    align-items: center
+    display: flex
+    justify-content: space-between
 
 main
   .container
@@ -150,6 +160,11 @@ footer
     width: 80vw
   pre
     width: 50%
+  header > .container
+    align-items: flex-start
+    flex-direction: column
+    nav
+      margin-top: 1rem
 
 @media screen and (max-width: 375px)
   #contact-btns
