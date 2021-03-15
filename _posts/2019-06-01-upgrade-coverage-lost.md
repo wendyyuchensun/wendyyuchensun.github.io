@@ -8,14 +8,14 @@ title: Curious Case of Coverage Lost After Upgrading Project Dependencies
 
 ### 最小可重現範例
 
-```shell
+{% highlight shell %}
 $ git clone git@github.com:wendyyuchensun/coverage-lost.git && cd coverage-lost
 $ git checkout origin && npm install --no-audit && npm run test
-```
+{% endhighlight %}
 
 此時您會只有對 `hi.js` 進行測試，而測試報告也僅包含 `hi.js`。
 
-```terminal
+{% highlight console %}
   hello
     - should return hello
 
@@ -31,17 +31,17 @@ File      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
 All files |      100 |      100 |      100 |      100 |                   |
  hi.js    |      100 |      100 |      100 |      100 |                   |
 ----------|----------|----------|----------|----------|-------------------|
-```
+{% endhighlight %}
 
 接下來將專案切換到已升級套件的版本：
 
-```shell
+{% highlight shell %}
 $ git checkout master && npm install --no-audit && npm run test
-```
+{% endhighlight %}
 
 會看見測試報告出現如下變化：
 
-```terminal
+{% highlight console %}
   hello
     - should return hello
 
@@ -59,7 +59,7 @@ All files |    35.37 |      100 |     3.57 |    50.91 |                   |
  hello.js |    33.75 |      100 |        0 |       50 |... 51,52,53,54,56 |
  hi.js    |      100 |      100 |      100 |      100 |                   |
 ----------|----------|----------|----------|----------|-------------------|
-```
+{% endhighlight %}
 
 縱使實際跳過了 `hello.js` 的測試， 但卻出現了 `hello.js` 的測試報告，
 拖累將整體測試覆蓋率。
@@ -80,7 +80,7 @@ All files |    35.37 |      100 |     3.57 |    50.91 |                   |
 可以看到 origin 的 requier 是 lazy-loaded，意即沒有運行測試的話，並不會計算覆蓋率；
 而新的套件組合並未 lazy-load (local) modules，所以變計入覆蓋率了。
 
-```js
+{% highlight js linenos %}
 // origin
 
 var _hello;
@@ -96,10 +96,9 @@ describe('hello', () => {
         (0, (_chai || _load_chai()).expect)((0, (_hello || _load_hello()).default)()).to.equal('hello');
     });
 });
+{% endhighlight %}
 
-```
-
-```js
+{% highlight js linenos %}
 // master (new)
 
 var _hello = _interopRequireDefault(require("../src/hello"));
@@ -111,8 +110,7 @@ describe('hello', () => {
     (0, _chai.expect)((0, _hello.default)()).to.equal('hello');
   });
 });
-
-```
+{% endhighlight %}
 
 ### 參考資料
 
