@@ -8,14 +8,14 @@ title: Curious Case of Coverage Lost After Upgrading Project Dependencies
 
 ### 最小可重現範例
 
-```bash
+```shell
 $ git clone git@github.com:wendyyuchensun/coverage-lost.git && cd coverage-lost
 $ git checkout origin && npm install --no-audit && npm run test
 ```
 
 此時您會只有對 `hi.js` 進行測試，而測試報告也僅包含 `hi.js`。
 
-```
+```terminal
   hello
     - should return hello
 
@@ -35,13 +35,13 @@ All files |      100 |      100 |      100 |      100 |                   |
 
 接下來將專案切換到已升級套件的版本：
 
-```bash
+```shell
 $ git checkout master && npm install --no-audit && npm run test
 ```
 
 會看見測試報告出現如下變化：
 
-```
+```terminal
   hello
     - should return hello
 
