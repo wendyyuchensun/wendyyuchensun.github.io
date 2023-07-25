@@ -7,3 +7,5 @@ _draft/
 test/
 _config_dev.yml
 _config_mobile.yml
+Gemfile
+Gemfile.lock
