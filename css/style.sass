@@ -4,13 +4,33 @@
 @import variable
 
 // base
+:root
+  --color: #{$c}
+  --lightColor: #{$lc}
+  --backgroundColor: #{$bgc}
+  --linkBorderBottomColor: #{$abdbc}
+  --linkHoverBorderBottomColor: #{$ahbdbc}
+  --codeBorderColor: #{$cbdc}
+  --codeBackgroundColor: #{$cbgc}
+
+@media (prefers-color-scheme: dark)
+  :root
+    --color: #{$dark-c}
+    --lightColor: #{$dark-lc}
+    --backgroundColor: #{$dark-bgc}
+    --linkBorderBottomColor: #{$dark-abdbc}
+    --linkHoverBorderBottomColor: #{$dark-ahbdbc}
+    --codeBorderColor: #{$dark-cbdc}
+    --codeBackgroundColor: #{$dark-cbgc}
+
 body
-  color: $lc
+  color: var(--lightColor)
+  background-color: var(--backgroundColor)
   font-size: $fs
   font-family: $sansSerif
 
 h1, h2, h3
-  color: $c
+  color: var(--color)
   font-family: $serif 
 
 h1
@@ -47,7 +67,7 @@ ol
 a
   transition: all 0.1s ease-in-out
   &:hover
-    color: $c
+    color: var(--color)
 
 img
   width: 100%
@@ -85,8 +105,8 @@ date
 
 p > code, li > code
   padding: 0 2px
-  border: 1px solid rgba($c, 0.2)
-  background: rgba($c, 0.1)
+  border: 1px solid var(--codeBorderColor)
+  background: var(--codeBackgroundColor)
   border-radius: 2px
 
 div.highlight
@@ -129,9 +149,9 @@ main
   .container
     padding: 2rem 0
   a
-    border-bottom: 1px dotted rgba($c, 0.2)
+    border-bottom: 1px dotted var(--linkBorderBottomColor)
     &:hover
-      border-bottom: 1px solid rgba($c, 0.5)
+      border-bottom: 1px solid var(--linkHoverBorderBottomColor)
 
 footer
   font-size: $cfs 
@@ -142,7 +162,7 @@ footer
 @import "syntax.css"
 
 .highlight
-  border: 1px solid rgba($c, 0.2)
+  border: 1px solid var(--codeBorderColor)
   border-radius: 3px
 
 .highlight .code
