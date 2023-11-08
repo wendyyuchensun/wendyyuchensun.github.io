@@ -33,14 +33,11 @@ function onWriteHead(code) {
     log.status = code;
 }
 
-...
-
-res.on('writeHead', onWriteHead);
-
 // Note:
 // You won't find 'writeHead' event in Nodejs.
 // The dependency we use has its own way to hook to Nodejs http methods.
 // I omit those details for simplicity.
+res.on('writeHead', onWriteHead);
 {% endhighlight %}
 
 The dependency also includes a default log object at the beginning, and a method to finish logging in the end.
@@ -76,7 +73,7 @@ Would it be something wrong with the above logic, so the dependency accidentally
 
 {% highlight js linenos %}
 // index.js, pseudocode
-const http = require('http')
+const http = require('http');
 
 const requestListener = function (req, res) {
     res.on('writeHead', () => console.log('res.writeHead'))
@@ -85,7 +82,7 @@ const requestListener = function (req, res) {
     // skip req error case
 
     req.on('data', () => {});
-    setImmediate(() => res.end())
+    setImmediate(() => res.end());
 }
 
 const server = http.createServer(requestListener);
