@@ -4,7 +4,7 @@
 @import variable
 
 // base
-:root
+html
   --color: #{$c}
   --lightColor: #{$lc}
   --backgroundColor: #{$bgc}
@@ -14,7 +14,7 @@
   --codeBackgroundColor: #{$cbgc}
 
 @media (prefers-color-scheme: dark)
-  :root
+  html
     --color: #{$dark-c}
     --lightColor: #{$dark-lc}
     --backgroundColor: #{$dark-bgc}
