@@ -33,7 +33,6 @@ function onWriteHead(code) {
     log.status = code;
 }
 
-// Note:
 // You won't find 'writeHead' event in Nodejs.
 // The dependency we use has its own way to hook to Nodejs http methods.
 // I omit those details for simplicity.
@@ -76,9 +75,9 @@ Would it be something wrong with the above logic, so the dependency accidentally
 const http = require('http');
 
 const requestListener = function (req, res) {
-    res.on('writeHead', () => console.log('res.writeHead'))
-    res.once('close', () => console.log('res.close'))
-    req.once('close', () => console.log('req.close'))
+    res.on('writeHead', () => console.log('res.writeHead'));
+    res.once('close', () => console.log('res.close'));
+    req.once('close', () => console.log('req.close'));
     // skip req error case
 
     req.on('data', () => {});
