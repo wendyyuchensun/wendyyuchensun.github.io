@@ -124,7 +124,7 @@ In the end, the dependency we use removed the `req.close` part to fix the issue.
 
 ### Disclaimer
 
-This is a very simplified story compared with what really happened. And I'm pretty sure the pseudocode won't work if you run it, since I intentionally omit a lot of information about the dependency. The pseudocode is just for demonstrating the issue. I didn't elaborate a lot of rationale, judgement and decisions we made during the investigation.
+This is a very simplified story compared with what really happened. And I'm pretty sure the pseudocode won't work if you run it, since I intentionally omit a lot of information about the dependency. The pseudocode is just for demonstrating the issue. I didn't elaborate a lot of rationale, judgement and decisions we made during the investigation, either.
 
 ### Reference
 
