@@ -96,9 +96,9 @@ server.listen(8080);
 wendy@mac % node -v
 v14.21.3
 
-wendy@mac % node index.js (+ `curl http://localhost:8080` in another terminal window)
-res.httpHooks:post:end => onWriteHead: collect status code information
-req.close => finishLog: finprint log
+wendy@mac % node index.js (then curl http://localhost:8080 in another terminal window)
+res.httpHooks:post:end
+req.close
 res.close
 {% endhighlight %}
 
@@ -106,9 +106,9 @@ res.close
 wendy@mac % node -v
 v16.20.1
 
-wendy@mac % node index.js (+ `curl http://localhost:8080` in another terminal window)
-req.close => finishLog: print log
-res.httpHooks:post:end => onWriteHead: collect status code information
+wendy@mac % node index.js (then curl http://localhost:8080 in another terminal window)
+req.close
+res.httpHooks:post:end
 res.close
 {% endhighlight %}
 
@@ -128,12 +128,10 @@ In the end, the dependency removed the `req.close` part to fix the issue.
 
 ### Disclaimer
 
-This is a very simplified story compared with what really happened.
-
-And I'm pretty sure the pseudocode won't work if you run it, since I intentionally omit a lot of information about the dependency.
+This is a very simplified story compared with what really happened. And I'm pretty sure the pseudocode won't work if you run it, since I intentionally omit a lot of information about the dependency.
 They are just for demonstrating the issue.
 
 ### Reference
 
 - [Undocumented breaking change on v16.0.0](https://github.com/nodejs/node/issues/38924)
-- [HTTP | Node.js v16.20.2 Documentation](https://nodejs.org/docs/latest-v16.x/api/http.html#event-close_3)
+- [HTTP - Node.js v16.20.2 Documentation](https://nodejs.org/docs/latest-v16.x/api/http.html#event-close_3)
