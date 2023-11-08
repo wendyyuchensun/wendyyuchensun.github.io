@@ -79,7 +79,7 @@ Would it be something wrong with the above logic, so the dependency accidentally
 const http = require('http')
 
 const requestListener = function (req, res) {
-    res.on('httpHooks:post:end', () => console.log('res.httpHooks:post:end'))
+    res.on('writeHead', () => console.log('res.writeHead'))
     res.once('close', () => console.log('res.close'))
     req.once('close', () => console.log('req.close'))
     // skip req error case
@@ -97,7 +97,7 @@ wendy@mac % node -v
 v14.21.3
 
 wendy@mac % node index.js (then curl http://localhost:8080 in another terminal window)
-res.httpHooks:post:end
+res.writeHead
 req.close
 res.close
 {% endhighlight %}
@@ -108,7 +108,7 @@ v16.20.1
 
 wendy@mac % node index.js (then curl http://localhost:8080 in another terminal window)
 req.close
-res.httpHooks:post:end
+res.writeHead
 res.close
 {% endhighlight %}
 
@@ -124,12 +124,11 @@ In Node16, `req.on('close')` refers to stream close, different compared with Nod
 It was a breaking change not [documented](https://nodejs.org/docs/latest-v16.x/api/http.html#event-close_3) very well.
 Seems a fair number of other OSS projects got broken by this change too.
 
-In the end, the dependency removed the `req.close` part to fix the issue.
+In the end, the dependency we use removed the `req.close` part to fix the issue.
 
 ### Disclaimer
 
-This is a very simplified story compared with what really happened. And I'm pretty sure the pseudocode won't work if you run it, since I intentionally omit a lot of information about the dependency.
-They are just for demonstrating the issue.
+This is a very simplified story compared with what really happened. And I'm pretty sure the pseudocode won't work if you run it, since I intentionally omit a lot of information about the dependency. The pseudocode is just for demonstrating the issue.
 
 ### Reference
 
