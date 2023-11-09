@@ -120,7 +120,7 @@ In Node16, `req.on('close')` refers to stream close, different compared with Nod
 It was a breaking change not [documented](https://nodejs.org/docs/latest-v16.x/api/http.html#event-close_3) very well.
 Seems a fair number of other OSS projects got broken by this change too.
 
-In the end, the dependency we use removed the `req.close` part to fix the issue.
+In the end, the dependency removed the `req.close` part to fix the issue, thanks to great help from collegues in other departments.
 
 ### Disclaimer
 
